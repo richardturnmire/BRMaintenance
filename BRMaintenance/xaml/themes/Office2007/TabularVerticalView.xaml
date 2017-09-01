@@ -1,0 +1,53 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="http://schemas.componentone.com/wpf/C1DataGrid"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    >
+
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="/xaml/themes/Office2007/Common.xaml"/>
+	</ResourceDictionary.MergedDictionaries>
+
+	<Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:C1DataGrid},
+			ResourceId=TabularVerticalViewStyleBase}" TargetType="{x:Type local:C1DataGrid}"
+      BasedOn="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type local:C1DataGrid},
+			ResourceId=Office2007CellDefinitionsStyle}}">
+		<Setter Property="Template" Value="{StaticResource DefaultGridTemplate}"/>
+		<Setter Property="SplitCellTemplate" 
+			Value="{StaticResource DefaultVerticalSplitCellTemplate}"/>
+		<Setter Property="ItemsPanelTemplate" 
+            Value="{StaticResource DefaultVerticalItemsPanelTemplate}"/>
+		<Setter Property="FixedNewItemCellTemplate" 
+            Value="{StaticResource Office2007FixedNewItemCellTemplate}"/>
+		<Setter Property="FixedNewItemTemplate" Value="{StaticResource Office2007FixedNewItemTemplate}"/>
+		<Setter Property="GroupStyles" Value="{StaticResource Office2007VerticalGroupStyles}"/>
+		<Setter Property="CellsAutoLayoutPanelTemplate" 
+            Value="{StaticResource DefaultHorizontalCellsLayoutPanelTemplate}"/>
+		<Setter Property="HeaderCellWidth" 
+            Value="{StaticResource DefaultColumnWidth}"/>
+		<Setter Property="SyncItemCellWidthToHeader" Value="true"/>
+		<Setter Property="AllowHorizontalColumnSizing" Value="true"/>
+		<Setter Property="AllowVerticalColumnSizing" Value="false"/>
+		<Setter Property="MoveColumnBeforeAdornerTemplate" 
+            Value="{StaticResource MoveHorizontalColumnBeforeAdornerTemplate}"/>
+		<Setter Property="MoveColumnAfterAdornerTemplate"    
+            Value="{StaticResource MoveHorizontalColumnAfterAdornerTemplate}"/>
+		<Setter Property="ListCellsAutoLayoutPanelTemplate" 
+            Value="{StaticResource DefaultHorizontalListlCellsLayoutPanelTemplate}"/>
+		<Setter Property="FilterBarTemplate" 
+            Value="{StaticResource DefaultFilterBarTemplate}"/>
+	</Style>
+
+	<Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:C1DataGrid},
+		ResourceId=TabularVerticalViewStyle}" TargetType="{x:Type local:C1DataGrid}"
+	  BasedOn="{StaticResource {ComponentResourceKey 
+		TypeInTargetAssembly={x:Type local:C1DataGrid},
+		ResourceId=TabularVerticalViewStyleBase}}">
+		<Setter Property="ChildGridStyle" 
+			Value="{StaticResource {ComponentResourceKey 
+			TypeInTargetAssembly={x:Type local:C1DataGrid},
+			ResourceId=TabularVerticalViewStyleBase}}"/>
+	</Style>
+
+
+</ResourceDictionary>

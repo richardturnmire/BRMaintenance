@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:C1.WPF.C1DataGrid"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    >
+
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="/C1.WPF.C1DataGrid;component/themes/Office2007/TabularVerticalView.xaml" />
+		<ResourceDictionary Source="/C1.WPF.C1DataGrid;component/themes/Office2007/TabularHorizontalView.xaml" />
+		<ResourceDictionary Source="/C1.WPF.C1DataGrid;component/themes/Office2007/CardView.xaml" />
+		<ResourceDictionary Source="/C1.WPF.C1DataGrid;component/themes/Office2007/CarouselView.xaml" />
+	</ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

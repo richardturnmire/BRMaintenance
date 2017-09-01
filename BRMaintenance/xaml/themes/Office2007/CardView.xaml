@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="http://schemas.componentone.com/wpf/C1DataGrid"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    >
+
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="/xaml/themes/Office2007/Common.xaml" />
+	</ResourceDictionary.MergedDictionaries>
+
+
+	<Style x:Key="{StaticResource CardViewStyle}" TargetType="{x:Type local:C1DataGrid}"
+    BasedOn="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type local:C1DataGrid},
+			ResourceId=Office2007CellDefinitionsStyle}}">
+		<Setter Property="Template" Value="{StaticResource DefaultGridTemplate}"/>
+		<Setter Property="SplitCellTemplate" Value="{StaticResource DefaultCardSplitCellTemplate}"/>
+		<Setter Property="GroupStyles" Value="{StaticResource Office2007CardGroupStyles}"/>
+		<Setter Property="ItemTemplate" Value="{StaticResource Office2007CardItemTemplate}"/>
+		<Setter Property="FixedNewItemCellTemplate" Value="{StaticResource Office2007FixedNewCardCellTemplate}"/>
+		<Setter Property="FixedNewItemTemplate" Value="{x:Null}"/>
+		<Setter Property="UniversalItemContentTemplate" 
+            Value="{StaticResource DefaultUniversalCardItemContentTemplate}"/>
+		<Setter Property="ItemCellTemplate" 
+            Value="{StaticResource Office2007CardCellTemplate}"/>
+		<Setter Property="ItemsPanelTemplate" 
+            Value="{StaticResource DefaultHorizontalItemsPanelTemplate}"/>
+		<Setter Property="CellsAutoLayoutPanelTemplate" 
+            Value="{StaticResource DefaultVerticalCellsLayoutPanelTemplate}"/>
+		<Setter Property="HeaderCellTemplate" 
+            Value="{StaticResource DefaultCardHeaderCellTemplate}"/>
+		<Setter Property="HeaderCellContentTemplate" 
+            Value="{StaticResource DefaultCardHeaderCellContentTemplate}"/>
+		<Setter Property="GroupByCellContentTemplate" 
+            Value="{StaticResource Office2007HeaderCellContentTemplate}"/>
+		<Setter Property="SyncItemCellWidthToHeader" Value="false"/>
+		<Setter Property="HeaderCellWidth" Value="100"/>
+		<Setter Property="ItemCellWidth" Value="200"/>
+		<Setter Property="HeaderVisibility" Value="Collapsed"/>
+	</Style>
+
+
+
+</ResourceDictionary>

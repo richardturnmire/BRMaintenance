@@ -1,0 +1,82 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:C1.WPF.C1DataGrid;assembly=C1.WPF.C1DataGrid"
+    >
+
+	<Style TargetType="GridSplitter" x:Key="DefaultHorizontalSplitResizerStyle">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="GridSplitter">
+					<StackPanel Orientation="Horizontal">
+						<Border Name="leftBorer"
+							Background="{DynamicResource C1DataGrid_SplitHorizontalLeft_Brush}"
+							Width="{DynamicResource C1DataGrid_SplitHorizontalLeft_Thickness}" />
+						<Border Name="centerBorder"
+							Background="{DynamicResource C1DataGrid_SplitHorizontalCenter_Brush}"
+							Width="{DynamicResource C1DataGrid_SplitHorizontalCenter_Thickness}" />
+						<Border Name="rightBorder"
+							Background="{DynamicResource C1DataGrid_SplitHorizontalRight_Brush}"
+							Width="{DynamicResource C1DataGrid_SplitHorizontalRight_Thickness}" />
+					</StackPanel>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="true">
+							<Setter TargetName="leftBorer" Property="Background"
+								Value="{DynamicResource C1DataGrid_SplitHorizontalLeft_HoverBrush}"/>
+							<Setter TargetName="centerBorder" Property="Background"
+								Value="{DynamicResource C1DataGrid_SplitHorizontalCenter_HoverBrush}"/>
+							<Setter TargetName="rightBorder" Property="Background"
+								Value="{DynamicResource C1DataGrid_SplitHorizontalRight_HoverBrush}"/>
+						</Trigger>
+						<Trigger Property="IsDragging" Value="true">
+							<Setter TargetName="leftBorer" Property="Background"
+								Value="{DynamicResource C1DataGrid_SplitHorizontalLeft_SelectedBrush}"/>
+							<Setter TargetName="centerBorder" Property="Background"
+								Value="{DynamicResource C1DataGrid_SplitHorizontalCenter_SelectedBrush}"/>
+							<Setter TargetName="rightBorder" Property="Background"
+								Value="{DynamicResource C1DataGrid_SplitHorizontalRight_SelectedBrush}"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style TargetType="GridSplitter" x:Key="DefaultVerticalSplitResizerStyle">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="GridSplitter">
+					<StackPanel Orientation="Vertical">
+						<Border Name="topBorer"
+							Background="{DynamicResource C1DataGrid_SplitVerticalTop_Brush}"
+							Height="{DynamicResource C1DataGrid_SplitVerticalTop_Thickness}" />
+						<Border Name="centerBorder"
+							Background="{DynamicResource C1DataGrid_SplitVerticalCenter_Brush}"
+							Height="{DynamicResource C1DataGrid_SplitVerticalCenter_Thickness}" />
+						<Border Name="bottomBorder"
+							Background="{DynamicResource C1DataGrid_SplitVerticalBottom_Brush}"
+							Height="{DynamicResource C1DataGrid_SplitVerticalBottom_Thickness}" />
+					</StackPanel>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="true">
+							<Setter TargetName="topBorer" Property="Background"
+								Value="{DynamicResource C1DataGrid_SplitVerticalTop_HoverBrush}"/>
+							<Setter TargetName="centerBorder" Property="Background"
+								Value="{DynamicResource C1DataGrid_SplitVerticalCenter_HoverBrush}"/>
+							<Setter TargetName="bottomBorder" Property="Background"
+								Value="{DynamicResource C1DataGrid_SplitVerticalBottom_HoverBrush}"/>
+						</Trigger>
+						<Trigger Property="IsDragging" Value="true">
+							<Setter TargetName="topBorer" Property="Background"
+								Value="{DynamicResource C1DataGrid_SplitVerticalTop_SelectedBrush}"/>
+							<Setter TargetName="centerBorder" Property="Background"
+								Value="{DynamicResource C1DataGrid_SplitVerticalCenter_SelectedBrush}"/>
+							<Setter TargetName="bottomBorder" Property="Background"
+								Value="{DynamicResource C1DataGrid_SplitVerticalBottom_SelectedBrush}"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+</ResourceDictionary>

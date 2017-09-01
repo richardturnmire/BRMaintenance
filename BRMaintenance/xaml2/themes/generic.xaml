@@ -1,0 +1,19 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:C1.WPF.C1DataGrid;assembly=C1.WPF.C1DataGrid"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    >
+  <ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="/xaml/themes/Office2007/Office2007.xaml" />
+	</ResourceDictionary.MergedDictionaries>
+
+
+	<Style TargetType="{x:Type local:C1DataGrid}" 
+       BasedOn="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type local:C1DataGrid},
+			ResourceId=TabularVerticalViewStyle}}">
+    
+  </Style>
+
+
+</ResourceDictionary>

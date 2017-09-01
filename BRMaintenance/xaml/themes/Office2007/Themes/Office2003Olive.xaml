@@ -1,0 +1,839 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" 
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    >
+	
+	<!--@ C1DataGrid Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_Brush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />
+	
+    <!--@ Cell Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_Cell_Brush" PresentationOptions:Freeze="True" Color="Transparent" />
+	<!--@ Cell Background Brush on Mouseover -->		
+	<SolidColorBrush  x:Key="C1DataGrid_Cell_HoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />
+	<!--@ Selected Cell Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_Cell_SelectedBrush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />	
+	<!--@ Selected Cell Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_Cell_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />
+	<!--@ Cell Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CellBorder_Brush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!--@ Cell Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CellBorder_HoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!--@ Selected Cell Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CellBorder_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected Cell Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CellBorder_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Cell Border Thickness (All 4 Edges) -->
+	<Thickness x:Key="C1DataGrid_CellBorder_Thickness">2</Thickness>
+	<!--@ Cell Border Corner Radius (All 4 corners) -->
+	<CornerRadius x:Key="C1DataGrid_CellBorder_CornerRadius">0</CornerRadius>
+	<!--@ Cell Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CellText_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Cell Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CellText_HoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected Cell Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CellText_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected Cell Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CellText_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+
+
+	<!--@ Hierarchy Expander Background Brush -->
+		<LinearGradientBrush  x:Key="C1DataGrid_HierarchyExpander_Brush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#FFffffff" Offset="0"/>
+		<GradientStop Color="#FFA0B8D0" Offset="1"/>
+	</LinearGradientBrush>	
+	
+	<!--@ Hierarchy Expander Foreground Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_HierarchyExpander_Foreground" PresentationOptions:Freeze="True" Color="#FF304860" />
+	
+	
+	<!--@ Child List Toggle Column Header Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_ChildToggleHeader_Brush" PresentationOptions:Freeze="True" Color="Transparent" />	
+	<!--@ Child List Toggle Column Header Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_ChildToggleHeader_HoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />	
+	<!--@ Child List Toggle Column Header Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_ChildToggleHeaderBorder_Brush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!--@ Child List Toggle Column Header Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_ChildToggleHeaderBorder_HoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!--@ Child List Toggle Column Header Border Thickness (All 4 Edges) -->
+	<Thickness x:Key="C1DataGrid_ChildToggleHeaderBorder_Thickness">1,1,1,1</Thickness>
+	<!--@ Child List Toggle Column Header Border Corner Radius (All 4 Corners) -->
+	<CornerRadius x:Key="C1DataGrid_ChildToggleHeaderBorder_CornerRadius">0</CornerRadius>
+	 <!--@ Child List Toggle Column Header Text Brush -->
+ 	<SolidColorBrush x:Key="C1DataGrid_ChildToggleHeaderText_Brush" PresentationOptions:Freeze="True" Color="#FF000000"/>
+ 	<!--@ Child List Toggle Column Header Text Brush on Mouseover -->
+	 <SolidColorBrush x:Key="C1DataGrid_ChildToggleHeaderText_HoverBrush" PresentationOptions:Freeze="True" Color="#FF000000"/>
+
+
+
+	<!--@ Child List Toggle Cell Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_ChildToggleText_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />	
+	<!--@ Child List Toggle Cell Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_ChildToggleBorder_Brush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!--@ Child List Toggle Cell Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_ChildToggleBorder_HoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!--@ Child List Toggle Cell Border Thickness (All 4 Edges) -->
+	<Thickness x:Key="C1DataGrid_ChildToggleBorder_Thickness">1,1,1,1</Thickness>
+	<!--@ Child List Toggle Cell Border Corner Radius (All 4 Corners) -->
+	<CornerRadius x:Key="C1DataGrid_ChildToggleBorder_CornerRadius">0</CornerRadius>
+			
+
+
+	<!--@ Column Header Background Brush -->
+	<LinearGradientBrush  x:Key="C1DataGrid_ColumnHeader_Brush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#FFFFFFFF" Offset="0"/>
+		<GradientStop Color="#FFFFFFFF" Offset="0.03"/>
+		<GradientStop Color="#FFECE9D8" Offset="0.031"/>
+		<GradientStop Color="#FFECE9D8" Offset="1"/>	
+	</LinearGradientBrush>	
+	<!--@ Column Header Background Brush on Mouseover -->
+	<LinearGradientBrush  x:Key="C1DataGrid_ColumnHeader_HoverBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#FFFFFFFF" Offset="0"/>
+		<GradientStop Color="#FFFFFFFF" Offset="0.03"/>
+		<GradientStop Color="#FFECE9D8" Offset="0.031"/>
+		<GradientStop Color="#FFECE9D8" Offset="1"/>
+	</LinearGradientBrush>
+	<!--@ Selected Column Header Background Brush -->
+	<LinearGradientBrush  x:Key="C1DataGrid_ColumnHeader_SelectedBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#FFFFFFFF" Offset="0"/>
+		<GradientStop Color="#FFFFFFFF" Offset="0.03"/>
+		<GradientStop Color="#FFFFBD75" Offset="0.031"/>
+		<GradientStop Color="#FFFFBD75" Offset="1"/>
+	</LinearGradientBrush>	
+	<!--@ Selected Column Header Background Brush on Mouseover -->
+	<LinearGradientBrush  x:Key="C1DataGrid_ColumnHeader_SelectedHoverBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#FFFFFFFF" Offset="0"/>
+		<GradientStop Color="#FFFFFFFF" Offset="0.03"/>
+		<GradientStop Color="#FFFFBD75" Offset="0.031"/>
+		<GradientStop Color="#FFFFBD75" Offset="1"/>
+	</LinearGradientBrush>
+	<!-- Column Header Background Brush When Activated by an Item or Row Hover or Selection (See Excel for interaction) -->
+	<LinearGradientBrush  x:Key="C1DataGrid_ColumnHeader_ActiveBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#FFFFFFFF" Offset="0"/>
+		<GradientStop Color="#FFFFFFFF" Offset="0.03"/>
+		<GradientStop Color="#FFFFBD75" Offset="0.031"/>
+		<GradientStop Color="#FFFFBD75" Offset="1"/>
+	</LinearGradientBrush>				
+	<!-- Column Header Background Brush When Activated by an Item or Row Hover or Selection (See Excel for interaction) on Mouseover -->
+	<LinearGradientBrush  x:Key="C1DataGrid_ColumnHeader_ActiveHoverBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#FFFFFFFF" Offset="0"/>
+		<GradientStop Color="#FFFFFFFF" Offset="0.03"/>
+		<GradientStop Color="#FFFFBD75" Offset="0.031"/>
+		<GradientStop Color="#FFFFBD75" Offset="1"/>
+	</LinearGradientBrush>
+	<!--@ Column Header Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderBorder_Brush" PresentationOptions:Freeze="True" Color="#FF7e7d68" />		
+	<!--@ Column Header Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderBorder_HoverBrush" PresentationOptions:Freeze="True" Color="#FF7e7d68" />		
+	<!--@ Selected Column Header Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderBorder_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!--@ Selected Column Header Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderBorder_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!-- Column Header Border Brush When Activated by an Item or Row Hover or Selection (See Excel for interaction) -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderBorder_ActiveBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!-- Column Header Border Brush When Activated by an Item or Row Hover or Selection (See Excel for interaction) on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderBorder_ActiveHoverBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!--@ Column Header Border Thickness (All 4 Edges) -->
+	<Thickness x:Key="C1DataGrid_ColumnHeaderBorder_Thickness">0,0,0,1</Thickness>
+	<!--@ Column Header Border Corner Radius (All 4 Corners) -->
+	<CornerRadius x:Key="C1DataGrid_ColumnHeaderBorder_CornerRadius">0</CornerRadius>		
+	<!--@ Column Header Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderText_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Column Header Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderText_HoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected Column Header Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderText_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected Column Header Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderText_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!-- Column Header Text Brush When Activated by an Item or Row Hover or Selection (See Excel for interaction) -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderText_ActiveBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!-- Column Header Text Brush When Activated by an Item or Row Hover or Selection (See Excel for interaction) on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderText_ActiveHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+
+
+	<!--@ "Group By" Area Column Header Background Brush -->
+	<LinearGradientBrush  x:Key="C1DataGrid_ColumnHeaderGroupArea_Brush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#FFFFFFFF" Offset="0"/>
+		<GradientStop Color="#FFFFFFFF" Offset="0.03"/>
+		<GradientStop Color="#FFECE9D8" Offset="0.031"/>
+		<GradientStop Color="#FFECE9D8" Offset="1"/>	
+	</LinearGradientBrush>			
+	<!--@ "Group By" Area Column Header Background Brush on Mouseover -->
+	<LinearGradientBrush  x:Key="C1DataGrid_ColumnHeaderGroupArea_HoverBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#FFFFFFFF" Offset="0"/>
+		<GradientStop Color="#FFFFFFFF" Offset="0.03"/>
+		<GradientStop Color="#FFECE9D8" Offset="0.031"/>
+		<GradientStop Color="#FFECE9D8" Offset="1"/>	
+	</LinearGradientBrush>
+	<!--@ Selected "Group By" Area Column Header Background Brush -->
+	<LinearGradientBrush  x:Key="C1DataGrid_ColumnHeaderGroupArea_SelectedBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#FFFFFFFF" Offset="0"/>
+		<GradientStop Color="#FFFFFFFF" Offset="0.03"/>
+		<GradientStop Color="#FFFFBD75" Offset="0.031"/>
+		<GradientStop Color="#FFFFBD75" Offset="1"/>
+	</LinearGradientBrush>
+	<!--@ Selected "Group By" Area Column Header Background Brush on Mouseover -->
+	<LinearGradientBrush  x:Key="C1DataGrid_ColumnHeaderGroupArea_SelectedHoverBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#FFFFFFFF" Offset="0"/>
+		<GradientStop Color="#FFFFFFFF" Offset="0.03"/>
+		<GradientStop Color="#FFFFBD75" Offset="0.031"/>
+		<GradientStop Color="#FFFFBD75" Offset="1"/>
+	</LinearGradientBrush>
+	<!-- "Group By" Area Column Header Background Brush When Activated by an Item or Row Hover or Selection (See Excel for interaction) -->
+	<LinearGradientBrush  x:Key="C1DataGrid_ColumnHeaderGroupArea_ActiveBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#FFFFFFFF" Offset="0"/>
+		<GradientStop Color="#FFFFFFFF" Offset="0.03"/>
+		<GradientStop Color="#FFFFBD75" Offset="0.031"/>
+		<GradientStop Color="#FFFFBD75" Offset="1"/>
+	</LinearGradientBrush>
+	<!-- "Group By" Area Column Header Background Brush When Activated by an Item or Row Hover or Selection (See Excel for interaction) on Mouseover -->
+	<LinearGradientBrush  x:Key="C1DataGrid_ColumnHeaderGroupArea_ActiveHoverBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#FFFFFFFF" Offset="0"/>
+		<GradientStop Color="#FFFFFFFF" Offset="0.03"/>
+		<GradientStop Color="#FFFFBD75" Offset="0.031"/>
+		<GradientStop Color="#FFFFBD75" Offset="1"/>
+	</LinearGradientBrush>
+	<!--@ "Group By" Area Column Header Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderGroupAreaBorder_Brush" PresentationOptions:Freeze="True" Color="#FF7e7d68" />		
+	<!--@ "Group By" Area Column Header Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderGroupAreaBorder_HoverBrush" PresentationOptions:Freeze="True" Color="#FF7e7d68" />		
+	<!--@ Selected "Group By" Area Column Header Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderGroupAreaBorder_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!--@ Selected "Group By" Area Column Header Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderGroupAreaBorder_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!-- "Group By" Area Column Header Border Brush When Activated by an Item or Row Hover or Selection (See Excel for interaction) -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderGroupAreaBorder_ActiveBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!-- "Group By" Area Column Header Border Brush When Activated by an Item or Row Hover or Selection (See Excel for interaction) on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderGroupAreaBorder_ActiveHoverBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!--@ "Group By" Area Column Header Border Thickness (All 4 Edges) -->
+	<Thickness x:Key="C1DataGrid_ColumnHeaderGroupAreaBorder_Thickness">1,1,1,1</Thickness>
+	<!--@ "Group By" Area Column Header Border Corner Radius (All 4 Corners) -->
+	<CornerRadius x:Key="C1DataGrid_ColumnHeaderGroupAreaBorder_CornerRadius">0</CornerRadius>
+	<!--@ "Group By" Area Column Header Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderGroupAreaText_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ "Group By" Area Column Header Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderGroupAreaText_HoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected "Group By" Area Column Header Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderGroupAreaText_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected "Group By" Area Column Header Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderGroupAreaText_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!-- "Group By" Area Column Header Text Brush When Activated by an Item or Row Hover or Selection (See Excel for interaction) -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderGroupAreaText_ActiveBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!-- "Group By" Area Column Header Text Brush When Activated by an Item or Row Hover or Selection (See Excel for interaction) on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnHeaderGroupAreaText_ActiveHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+
+
+	<!--@ Vertical Grid Line Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_GridLineVertical_Brush" PresentationOptions:Freeze="True" Color="#FFC0C0C0" />		
+	<!--@ Vertical Grid Line Thickness -->
+	<sys:Double x:Key="C1DataGrid_GridLineVertical_Thickness">1</sys:Double>
+
+
+
+	<!--@ Horizontal Grid Line Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_GridLineHorizontal_Brush" PresentationOptions:Freeze="True" Color="#FFC0C0C0" />		
+	<!--@ Horizontal Grid Line Thickness -->
+	<sys:Double x:Key="C1DataGrid_GridLineHorizontal_Thickness">1</sys:Double>		
+
+
+
+	<!--@ "Group By" Area Background Brush -->
+	<LinearGradientBrush  x:Key="C1DataGrid_GroupArea_Brush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+  	<GradientStop Color="#FFACA899" Offset="0"/>
+	<GradientStop Color="#FFACA899" Offset="1"/>
+
+	</LinearGradientBrush>		
+	<!--@ "Group By" Area Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_GroupAreaBorder_Brush" PresentationOptions:Freeze="True" Color="#40FFFFFF" />		
+	<!--@ "Group By" Area Border Thickness (All 4 Edges) -->
+	<Thickness x:Key="C1DataGrid_GroupAreaBorder_Thickness">1,1,1,0</Thickness>
+	<!--@ "Group By" Area Border Corner Radius (All 4 Corners) -->
+	<CornerRadius x:Key="C1DataGrid_GroupAreaBorder_CornerRadius">0</CornerRadius>		
+	<!--@ "Group By" Area Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_GroupAreaText_Brush" PresentationOptions:Freeze="True" Color="#70FFFFFF" />		
+	<!--@ "Group By" Area Column Connector Pen -->
+	<Pen x:Key="C1DataGrid_GroupAreaConnector_Pen" Thickness="1" Brush="#40FFFFFF"/>
+
+	<!--@ Grid Row Group Header Background Brush when in "Group By" Mode -->
+	<SolidColorBrush  x:Key="C1DataGrid_GroupHeader_Brush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!--@ Grid Row Group Header Background Brush when in "Group By" Mode on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_GroupHeader_HoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />	
+	<!--@ Grid Row Group Header Border Brush when in "Group By" Mode -->
+	<SolidColorBrush  x:Key="C1DataGrid_GroupHeaderBorder_Brush" PresentationOptions:Freeze="True" Color="#FF7e7d68" />		
+	<!--@ Grid Row Group Header Border Brush when in "Group By" Mode on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_GroupHeaderBorder_HoverBrush" PresentationOptions:Freeze="True" Color="#FF7e7d68" />		
+	<!--@ Grid Row Group Header Border Thickness (All 4 Edges) when in "Group By" Mode -->
+	<Thickness x:Key="C1DataGrid_GroupHeaderBorder_Thickness">0,0,0,2</Thickness>
+	<!--@ Grid Row Group Header Border Corner Radius (All 4 Corners) when in "Group By" Mode -->
+	<CornerRadius x:Key="C1DataGrid_GroupHeaderBorder_CornerRadius">0</CornerRadius>
+	<!--@ Grid Row Group Header Text Brush when in "Group By" Mode -->
+	<SolidColorBrush  x:Key="C1DataGrid_GroupHeaderText_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Grid Row Group Header Text Brush when in "Group By" Mode on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_GroupHeaderText_HoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />
+
+	<!--@ Header Item Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_HeaderItem_Brush" PresentationOptions:Freeze="True" Color="Transparent" />
+	<!--@ Header Item Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_HeaderItem_HoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />
+
+
+	<!--@ Header Item Header Background Brush -->
+	<LinearGradientBrush  x:Key="C1DataGrid_HeaderItemHeader_Brush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#FFFFFFFF" Offset="0"/>
+		<GradientStop Color="#FFFFFFFF" Offset="0.03"/>
+		<GradientStop Color="#FFECE9D8" Offset="0.031"/>
+		<GradientStop Color="#FFECE9D8" Offset="1"/>	
+	</LinearGradientBrush>	
+	<!--@ Header Item Header Background Brush on Mouseover -->
+	<LinearGradientBrush  x:Key="C1DataGrid_HeaderItemHeader_HoverBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#FFFFFFFF" Offset="0"/>
+		<GradientStop Color="#FFFFFFFF" Offset="0.03"/>
+		<GradientStop Color="#FFECE9D8" Offset="0.031"/>
+		<GradientStop Color="#FFECE9D8" Offset="1"/>	
+	</LinearGradientBrush>
+	<!--@ Header Item Header Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_HeaderItemHeaderBorder_Brush" PresentationOptions:Freeze="True" Color="#FF7e7d68" />
+	<!--@ Header Item Header Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_HeaderItemHeaderBorder_HoverBrush" PresentationOptions:Freeze="True" Color="#FF7e7d68" />
+	<!--@ Header Item Header Border Thickness (All 4 Edges) -->
+	<Thickness x:Key="C1DataGrid_HeaderItemHeaderBorder_Thickness">0,0,1,0</Thickness>
+	<!--@ Header Item Header Border Corner Radius (All 4 Corners) -->
+	<CornerRadius x:Key="C1DataGrid_HeaderItemHeaderBorder_CornerRadius">0</CornerRadius>
+	<!--@ Header Item Header Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_HeaderItemHeaderText_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />
+	<!--@ Header Item Header Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_HeaderItemHeaderText_HoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />
+	<!---->
+
+	<!--@ Row Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_Row_Brush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />
+	<!--@ Row Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_Row_HoverBrush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />
+	<!--@ Selected Row Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_Row_SelectedBrush" PresentationOptions:Freeze="True" Color="#FFd9ddcc" />
+	<!--@ Selected Row Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_Row_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FFd9ddcc" />
+
+
+	<!--@ Row Header Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_RowHeader_Brush" PresentationOptions:Freeze="True" Color="#FFefebde" />
+	<!--@ Row Header Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_RowHeader_HoverBrush" PresentationOptions:Freeze="True" Color="#FFefebde" />
+	<!--@ Selected Row Header Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_RowHeader_SelectedBrush" PresentationOptions:Freeze="True" Color="#FFffc06f" />
+	<!--@ Selected Row Header Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_RowHeader_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FFffc06f" />	
+	<!-- Row Header Background Brush When Activated by an Item or Column Hover or Selection -->
+	<SolidColorBrush  x:Key="C1DataGrid_RowHeader_ActiveBrush" PresentationOptions:Freeze="True" Color="#FFffc06f" />			
+	<!-- Row Header Background Brush When Activated by an Item or Column Hover or Selection on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_RowHeader_ActiveHoverBrush" PresentationOptions:Freeze="True" Color="#FFffc06f" />
+	<!--@ Row Header Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_RowHeaderBorder_Brush" PresentationOptions:Freeze="True" Color="#FF7e7d68" />		
+	<!--@ Row Header Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_RowHeaderBorder_HoverBrush" PresentationOptions:Freeze="True" Color="#FF7e7d68" />		
+	<!--@ Selected Row Header Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_RowHeaderBorder_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!--@ Selected Row Header Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_RowHeaderBorder_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!-- Row Header Border Brush When Activated by an Item or Column Hover or Selection (See Excel for interaction) -->
+	<SolidColorBrush  x:Key="C1DataGrid_RowHeaderBorder_ActiveBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!-- Row Header Border Brush When Activated by an Item or Column Hover or Selection (See Excel for interaction) on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_RowHeaderBorder_ActiveHoverBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!--@ Row Header Border Thickness (All 4 Edges) -->
+	<Thickness x:Key="C1DataGrid_RowHeaderBorder_Thickness">0,0,1,0</Thickness>
+	<!--@ Row Header Border Corner Radius (All 4 Corners) -->
+	<CornerRadius x:Key="C1DataGrid_RowHeaderBorder_CornerRadius">0</CornerRadius>	
+	<!--@ Row Header Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_RowHeaderText_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Row Header Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_RowHeaderText_HoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected Row Header Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_RowHeaderText_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected Row Header Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_RowHeaderText_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!-- Row Header Text Brush When Activated by an Item or Column Hover or Selection (See Excel for interaction) -->
+	<SolidColorBrush  x:Key="C1DataGrid_RowHeaderText_ActiveBrush" PresentationOptions:Freeze="True" Color="#FF000000" />				
+	<!-- Row Header Text Brush When Activated by an Item or Column Hover or Selection (See Excel for interaction) on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_RowHeaderText_ActiveHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+
+
+	<!--@ Vertical Splitter Left Top Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_SplitVerticalTop_Brush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />		
+	<!--@ Vertical Splitter Top Line Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_SplitVerticalTop_HoverBrush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />		
+	<!--@ Selected Vertical Splitter Top Line Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_SplitVerticalTop_SelectedBrush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />		
+	<!--@ Vertical Splitter Top Line Thickness -->
+	<sys:Double x:Key="C1DataGrid_SplitVerticalTop_Thickness">1</sys:Double>
+
+	<!--@ Vertical Splitter Center Line Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_SplitVerticalCenter_Brush" PresentationOptions:Freeze="True" Color="#FFece9d8" />
+	<!--@ Vertical Splitter Center Line Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_SplitVerticalCenter_HoverBrush" PresentationOptions:Freeze="True" Color="#FFece9d8" />
+	<!--@ Selected Vertical Splitter Center Line Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_SplitVerticalCenter_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF74865e" />
+	<!--@ Vertical Splitter Center Line Thickness -->
+	<sys:Double x:Key="C1DataGrid_SplitVerticalCenter_Thickness">4</sys:Double>
+	
+	<!--@ Vertical Splitter Bottom Line Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_SplitVerticalBottom_Brush" PresentationOptions:Freeze="True" Color="#FFaca899" />
+	<!--@ Vertical Splitter Bottom Line Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_SplitVerticalBottom_HoverBrush" PresentationOptions:Freeze="True" Color="#FFaca899" />
+	<!--@ Selected Vertical Splitter Bottom Line Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_SplitVerticalBottom_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF000000" />
+	<!--@ Vertical Splitter Bottom Line Thickness -->
+	<sys:Double x:Key="C1DataGrid_SplitVerticalBottom_Thickness">1</sys:Double>
+
+
+	<!-- Horizontal Splitter Left Line Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_SplitHorizontalLeft_Brush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />
+	<!--@ Horizontal Splitter Left Line Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_SplitHorizontalLeft_HoverBrush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />
+	<!--@ Selected Horizontal Splitter Left Line Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_SplitHorizontalLeft_SelectedBrush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />
+	<!--@ Horizontal Splitter Left Line Thickness -->
+	<sys:Double x:Key="C1DataGrid_SplitHorizontalLeft_Thickness">1</sys:Double>
+
+	<!--@ Horizontal Splitter Center Line Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_SplitHorizontalCenter_Brush" PresentationOptions:Freeze="True" Color="#FFece9d8" />
+	<!--@ Horizontal Splitter Center Line Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_SplitHorizontalCenter_HoverBrush" PresentationOptions:Freeze="True" Color="#FFece9d8" />
+	<!--@ Selected Horizontal Splitter Center Line Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_SplitHorizontalCenter_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF74865e" />
+	<!--@ Horizontal Splitter Center Line Thickness -->
+	<sys:Double x:Key="C1DataGrid_SplitHorizontalCenter_Thickness">4</sys:Double>
+
+	<!--@ Horizontal Splitter Right Line Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_SplitHorizontalRight_Brush" PresentationOptions:Freeze="True" Color="#FFaca899" />
+	<!--@ Horizontal Splitter Right Line Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_SplitHorizontalRight_HoverBrush" PresentationOptions:Freeze="True" Color="#FFaca899" />
+	<!--@ Selected Horizontal Splitter Right Line Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_SplitHorizontalRight_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF000000" />
+	<!--@ Horizontal Splitter Right Line Thickness -->
+	<sys:Double x:Key="C1DataGrid_SplitHorizontalRight_Thickness">1</sys:Double>
+
+	<!--@ FilterBar Cell Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterCell_Brush" PresentationOptions:Freeze="True" Color="Transparent" />
+	<!--@ FilterBar Cell Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterCell_HoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />
+	<!--@ Selected FilterBar Cell Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterCell_SelectedBrush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />	
+	<!--@ Selected FilterBar Cell Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterCell_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />	
+	<!--@ FilterBar Cell Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterCellBorder_Brush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!--@ FilterBar Cell Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterCellBorder_HoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!--@ Selected FilterBar Cell Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterCellBorder_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected FilterBar Cell Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterCellBorder_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ FilterBar Cell Border Thickness (All 4 Edges) -->
+	<Thickness x:Key="C1DataGrid_FilterCellBorder_Thickness">2</Thickness>
+	<!--@ FilterBar Cell Border Corner Radius (All 4 Corners) -->
+	<CornerRadius x:Key="C1DataGrid_FilterCellBorder_CornerRadius">0</CornerRadius>		
+	<!--@ FilterBar Cell Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterCellText_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ FilterBar Cell Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterCellText_HoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected FilterBar Cell Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterCellText_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected FilterBar Cell Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterCellText_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+
+
+	<!--@ FilterBar Row Header Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterItemRowHeader_Brush" PresentationOptions:Freeze="True" Color="#FFefebde" />		
+	<!--@ FilterBar Row Header Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterRowHeader_HoverBrush" PresentationOptions:Freeze="True" Color="#FFefebde" />	
+	<!--@ Selected FilterBar Row Header Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterItemRowHeader_SelectedBrush" PresentationOptions:Freeze="True" Color="#FFffc06f" />	
+	<!--@ Selected FilterBar Row Header Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterItemRowHeader_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FFffc06f" />		
+	<!-- FilterBar Row Header Background Brush When Activated by an Item or Column Hover or Selection (See Excel for interaction) -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterItemRowHeader_ActiveBrush" PresentationOptions:Freeze="True" Color="#FFffc06f" />			
+	<!-- FilterBar Row Header Background Brush When Activated by an Item or Column Hover or Selection (See Excel for interaction) on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterItemRowHeader_ActiveHoverBrush" PresentationOptions:Freeze="True" Color="#FFffc06f" />	
+	<!--@ FilterBar Row Header Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterItemRowHeaderBorder_Brush" PresentationOptions:Freeze="True" Color="#FF7e7d68" />		
+	<!--@ FilterBar Row Header Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterItemRowHeaderBorder_HoverBrush" PresentationOptions:Freeze="True" Color="#FF7e7d68" />		
+	<!--@ Selected FilterBar Row Header Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterItemRowHeaderBorder_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!--@ Selected FilterBar Row Header Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterItemRowHeaderBorder_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!-- FilterBar Row Header Border Brush When Activated by an Item or Column Hover or Selection (See Excel for interaction) -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterItemRowHeaderBorder_ActiveBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!-- FilterBar Row Header Border Brush When Activated by an Item or Column Hover or Selection (See Excel for interaction) on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterItemRowHeaderBorder_ActiveHoverBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!--@ FilterBar Row Header Border Thickness (All 4 Edges) -->
+	<Thickness x:Key="C1DataGrid_FilterItemRowHeaderBorder_Thickness">0,0,1,0</Thickness>
+	<!--@ FilterBar Row Header Border Corner Radius (All 4 Corners) -->
+	<CornerRadius x:Key="C1DataGrid_FilterItemRowHeaderBorder_CornerRadius">0</CornerRadius>		
+	<!--@ FilterBar Row Header Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterItemRowHeaderText_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ FilterBar Row Header Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterItemRowHeaderText_HoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected FilterBar Row Header Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterItemRowHeaderText_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected FilterBar Row Header Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterItemRowHeaderText_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!-- FilterBar Row Header Text Brush When Activated by an Item or Column Hover or Selection (See Excel for interaction) -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterItemRowHeaderText_ActiveBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!-- FilterBar Row Header Text Brush When Activated by an Item or Column Hover or Selection (See Excel for interaction) on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterItemRowHeaderText_ActiveHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />
+
+	<!--@ FilterBar Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterBar_Brush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />
+	<!--@ FilterBar Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterBar_HoverBrush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />
+	<!--@ Selected FilterBar Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterBar_SelectedBrush" PresentationOptions:Freeze="True" Color="#FFd9ddcc" />
+	<!--@ Selected FilterBar Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterBar_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FFd9ddcc" />
+
+
+
+	<!--@ New Item Cell Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemCell_Brush" PresentationOptions:Freeze="True" Color="Transparent" />
+	<!--@ New Item Cell Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemCell_HoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />	
+	<!--@ Selected New Item Cell Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemCell_SelectedBrush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />	
+	<!--@ Selected New Item Cell Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemCell_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />	
+	<!--@ New Item Cell Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemCellBorder_Brush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!--@ New Item Cell Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemCellBorder_HoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!--@ Selected New Item Cell Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemCellBorder_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected New Item Cell Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemCellBorder_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ New Item Cell Border Thickness (All 4 Edges) -->
+	<Thickness x:Key="C1DataGrid_NewItemCellBorder_Thickness">2</Thickness>
+	<!--@ New Item Cell Border Corner Radius (All 4 Corners) -->
+	<CornerRadius x:Key="C1DataGrid_NewItemCellBorder_CornerRadius">0</CornerRadius>
+	<!--@ New Item Cell Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemCellText_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ New Item Cell Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemCellText_HoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected New Item Cell Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemCellText_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected New Item Cell Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemCellText_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />
+
+	<!--@ New Item Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItem_Brush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />
+	<!--@ New Item Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItem_HoverBrush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />
+	<!--@ Selected New Item Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItem_SelectedBrush" PresentationOptions:Freeze="True" Color="#FFd9ddcc" />
+	<!--@ Selected New Item Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItem_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FFd9ddcc" />
+
+
+
+	<!--@ New Item Row Header Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemRowHeader_Brush" PresentationOptions:Freeze="True" Color="#FFefebde" />	
+	<!--@ New Item Row Header Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemRowHeader_HoverBrush" PresentationOptions:Freeze="True" Color="#FFefebde" />	
+	<!--@ Selected New Item Row Header Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemRowHeader_SelectedBrush" PresentationOptions:Freeze="True" Color="#FFffc06f" />		
+	<!--@ Selected New Item Row Header Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemRowHeader_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FFffc06f" />		
+	<!-- New Item Row Header Background Brush When Activated by an Item or Column Hover or Selection (See Excel for interaction) -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemRowHeader_ActiveBrush" PresentationOptions:Freeze="True" Color="#FFffc06f" />		
+	<!-- New Item Row Header Background Brush When Activated by an Item or Column Hover or Selection (See Excel for interaction) on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemRowHeader_ActiveHoverBrush" PresentationOptions:Freeze="True" Color="#FFffc06f" />	
+	<!--@ New Item Row Header Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemRowHeaderBorder_Brush" PresentationOptions:Freeze="True" Color="#FF7e7d68" />		
+	<!--@ New Item Row Header Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemRowHeaderBorder_HoverBrush" PresentationOptions:Freeze="True" Color="#FF7e7d68" />		
+	<!--@ Selected New Item Row Header Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemRowHeaderBorder_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!--@ Selected New Item Row Header Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemRowHeaderBorder_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!-- New Item Row Header Border Brush When Activated by an Item or Column Hover or Selection (See Excel for interaction) -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemRowHeaderBorder_ActiveBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!-- New Item Row Header Border Brush When Activated by an Item or Column Hover or Selection (See Excel for interaction) on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemRowHeaderBorder_ActiveHoverBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!--@ New Item Row Header Border Thickness (All 4 Edges) -->
+	<Thickness x:Key="C1DataGrid_NewItemRowHeaderBorder_Thickness">0,0,1,0</Thickness>
+	<!--@ New Item Row Header Border Corner Radius (All 4 Corners) -->
+	<CornerRadius x:Key="C1DataGrid_NewItemRowHeaderBorder_CornerRadius">0</CornerRadius>
+	<!--@ New Item Row Header Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemRowHeaderText_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ New Item Row Header Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemRowHeaderText_HoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected New Item Row Header Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemRowHeaderText_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected New Item Row Header Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemRowHeaderText_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!-- New Item Row Header Text Brush When Activated by an Item or Column Hover or Selection (See Excel for interaction) -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemRowHeaderText_ActiveBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!-- New Item Row Header Text Brush When Activated by an Item or Column Hover or Selection (See Excel for interaction) on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemRowHeaderText_ActiveHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+
+
+
+	<!--@ Filter Item Indicator Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_FilterItemIndicator_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+
+	<!--@ New Item Indicator Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_NewItemIndicator_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+
+	<!--@ Current Item Indicator Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CurrentItemIndicator_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+
+	<!--@ Column Header Ascending Sort Indicator Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_SortAscendingIndicator_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+
+	<!--@ Column Header Descending Sort Indicator Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_SortDescendingIndicator_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+
+	<!--@ Column Vertical Reorder Indicators Which Point to the New Column Position -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnReorderIndicatorVertical_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+
+	<!--@ Column Horizontal Reorder Indicators Which Point to the New Column Position -->
+	<SolidColorBrush  x:Key="C1DataGrid_ColumnReorderIndicatorHorizontal_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />
+
+
+
+	<!--@ Card View Background Brush -->
+	<LinearGradientBrush  x:Key="C1DataGrid_Card_Brush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+  		<GradientStop Color="#FFe6ead0" Offset="0"/>
+		<GradientStop Color="#FFd9e3bb" Offset="1"/>
+	</LinearGradientBrush>	
+	<!--@ Card View Background Brush on Mouseover -->
+	<LinearGradientBrush  x:Key="C1DataGrid_Card_HoverBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+  		<GradientStop Color="#FFe6ead0" Offset="0"/>
+		<GradientStop Color="#FFd9e3bb" Offset="1"/>
+	</LinearGradientBrush>	
+	<!--@ Selected Card View Background Brush -->
+	<LinearGradientBrush  x:Key="C1DataGrid_Card_SelectedBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+  		<GradientStop Color="#FFe6ead0" Offset="0"/>
+		<GradientStop Color="#FFd9e3bb" Offset="1"/>
+	</LinearGradientBrush>
+	<!--@ Selected Card View Background Brush on Mouseover -->
+	<LinearGradientBrush  x:Key="C1DataGrid_Card_SelectedHoverBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+  		<GradientStop Color="#FFe6ead0" Offset="0"/>
+		<GradientStop Color="#FFd9e3bb" Offset="1"/>
+	</LinearGradientBrush>	
+	<!--@ Card View Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardBorder_Brush" PresentationOptions:Freeze="True" Color="#FF608058" />		
+	<!--@ Card View Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardBorder_HoverBrush" PresentationOptions:Freeze="True" Color="#FF608058" />		
+	<!--@ Selected Card View Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardBorder_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF608058" />		
+	<!--@ Selected Card View Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardBorder_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF608058" />		
+	<!--@ Card View Border Thickness (All 4 Edges) -->
+	<Thickness x:Key="C1DataGrid_CardBorder_Thickness">1,0,1,1.5</Thickness>
+	<!--@ Card View Border Corner Radius (All 4 Corners) -->
+	<CornerRadius x:Key="C1DataGrid_CardBorder_CornerRadius">0,0,0,0</CornerRadius>	
+
+
+	<!--@ Card View Cell Background Brush -->
+	<LinearGradientBrush  x:Key="C1DataGrid_CardCell_Brush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#ffFFFFFF" Offset="0"/>
+		<GradientStop Color="#FFFFFFFF" Offset="1"/>
+	</LinearGradientBrush>
+	<!--@ Card View Cell Background Brush on Mouseover -->
+	<LinearGradientBrush  x:Key="C1DataGrid_CardCell_HoverBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#ffffffff" Offset="0"/>
+		<GradientStop Color="#90ffffff" Offset="1"/>
+	</LinearGradientBrush>	
+	<!--@ Selected Card View Cell Background Brush -->
+	<LinearGradientBrush  x:Key="C1DataGrid_CardCell_SelectedBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#ffffffff" Offset="0"/>	
+		<GradientStop Color="#FFffffff" Offset="1"/>
+	</LinearGradientBrush>
+	<!--@ Selected Card View Cell Background Brush on Mouseover -->
+	<LinearGradientBrush  x:Key="C1DataGrid_CardCell_SelectedHoverBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#ffffffff" Offset="0"/>
+		<GradientStop Color="#90ffffff" Offset="1"/>
+	</LinearGradientBrush>		
+	<!--@ Card View Cell Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardCellBorder_Brush" PresentationOptions:Freeze="True" Color="Transparent" />	
+	<!--@ Card View Cell Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardCellBorder_HoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />				
+	<!--@ Selected Card View Cell Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardCellBorder_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />
+	<!--@ Selected Card View Cell Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardCellBorder_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />		
+	<!--@ Card View Cell Border Thickness (All 4 Edges) -->
+	<Thickness x:Key="C1DataGrid_CardCellBorder_Thickness">1</Thickness>
+	<!-- Card View Cell Border Corner Radius (All 4 Corner) -->
+	<CornerRadius x:Key="C1DataGrid_CardCellBorder_CornerRadius">0</CornerRadius>	
+	<!--@ Card View Cell Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardCellText_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Card View Cell Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardCellText_HoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected Card View Cell Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardCellText_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected Card View Cell Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardCellText_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+
+
+	<!-- Card View New Item Cell Background Brush -->
+	<LinearGradientBrush  x:Key="C1DataGrid_CardNewItemCell_Brush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#ffFFFFFF" Offset="0"/>
+		<GradientStop Color="#FFFFFFFF" Offset="1"/>
+	</LinearGradientBrush>
+	<!-- Card View New Item Cell Background Brush on Mouseover -->
+	<LinearGradientBrush  x:Key="C1DataGrid_CardNewItemCell_HoverBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#ffffffff" Offset="0"/>
+		<GradientStop Color="#90ffffff" Offset="1"/>
+	</LinearGradientBrush>
+	<!-- Selected New Item Card View Cell Background Brush -->
+	<LinearGradientBrush  x:Key="C1DataGrid_CardNewItemCell_SelectedBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#ffffffff" Offset="0"/>	
+		<GradientStop Color="#FFffffff" Offset="1"/>
+	</LinearGradientBrush>
+	<!-- Selected Card View New Item Cell Background Brush on Mouseover -->
+	<LinearGradientBrush  x:Key="C1DataGrid_CardNewItemCell_SelectedHoverBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#ffffffff" Offset="0"/>
+		<GradientStop Color="#90ffffff" Offset="1"/>
+	</LinearGradientBrush>
+	<!-- Card View New Item Cell Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemCellBorder_Brush" PresentationOptions:Freeze="True" Color="Transparent" />
+	<!-- Card View New Item Cell Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemCellBorder_HoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />
+	<!-- Selected Card View New Item Cell Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemCellBorder_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />
+	<!-- Selected Card View New Item Cell Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemCellBorder_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF3f5d38" />
+	<!-- Card View New Item Cell Border Thickness (All 4 Edges) -->
+	<Thickness x:Key="C1DataGrid_CardNewItemCellBorder_Thickness">1</Thickness>
+	<!-- Card View New Item Cell Border Corner Radius (All 4 Corner) -->
+	<CornerRadius x:Key="C1DataGrid_CardNewItemCellBorder_CornerRadius">0</CornerRadius>
+	<!-- Card View New Item Cell Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemCellText_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />
+	<!-- Card View New Item Cell Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemCellText_HoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />
+	<!-- Selected Card View New Item Cell Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemCellText_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF000000" />
+	<!-- Selected Card View New Item Cell Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemCellText_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />
+
+
+	<!--@ Card View Column Header Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardColumnHeader_Brush" PresentationOptions:Freeze="True" Color="Transparent" />
+	<!--@ Card View Column Header Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardColumnHeader_HoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />	
+	<!--@ Selected Card View Column Header Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardColumnHeader_SelectedBrush" PresentationOptions:Freeze="True" Color="Transparent" />
+	<!--@ Selected Card View Column Header Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardColumnHeader_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!--@ Card View Column Header Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardColumnHeaderBorder_Brush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!--@ Card View Column Header Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardColumnHeaderBorder_HoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!--@ Selected Card View Column Header Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardColumnHeaderBorder_SelectedBrush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!--@ Selected Card View Column Header Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardColumnHeaderBorder_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!--@ Card View Column Header Border Thickness (All 4 Edges) -->
+	<Thickness x:Key="C1DataGrid_CardColumnHeaderBorder_Thickness">0,0,1,1</Thickness>
+	<!-- Card View Column Header Border Corner Radius (All 4 Corners) -->
+	<CornerRadius x:Key="C1DataGrid_CardColumnHeaderBorder_CornerRadius">3</CornerRadius>	
+	<!--@ Card View Column Header Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardColumnHeaderText_Brush" PresentationOptions:Freeze="True" Color="#FF5a6b46" />		
+	<!--@ Card View Column Header Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardColumnHeaderText_HoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected Card View Column Header Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardColumnHeaderText_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF5a6b46" />		
+	<!--@ Selected Card View Column Header Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardColumnHeaderText_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+
+
+	<!-- Card View New Item Column Header Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemColumnHeader_Brush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!-- Card View New Item Column Header Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemColumnHeader_HoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!-- Selected Card View New Item Column Header Background Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemColumnHeader_SelectedBrush" PresentationOptions:Freeze="True" Color="Transparent" />
+	<!-- Selected Card View New Item Column Header Background Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemColumnHeader_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />
+	<!-- Card View New Item Column Header Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemColumnHeaderBorder_Brush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!-- Card View New Item Column Header Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemColumnHeaderBorder_HoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!-- Selected Card View New Item Column Header Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemColumnHeaderBorder_SelectedBrush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!-- Selected Card View New Item Column Header Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemColumnHeaderBorder_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="Transparent" />		
+	<!-- Card View New Item Column Header Border Thickness (All 4 Edges) -->
+	<Thickness x:Key="C1DataGrid_CardNewItemColumnHeaderBorder_Thickness">1</Thickness>
+	<!-- Card View New Item Column Header Border Corner Radius (All 4 Corners) -->
+	<CornerRadius x:Key="C1DataGrid_CardNewItemColumnHeaderBorder_CornerRadius">0</CornerRadius>		
+	<!-- Card View New Item Column Header Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemColumnHeaderText_Brush" PresentationOptions:Freeze="True" Color="#FF5a6b46" />		
+	<!-- Card View New Item Column Header Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemColumnHeaderText_HoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!-- Selected Card View New Item Column Header Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemColumnHeaderText_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF5a6b46" />		
+	<!-- Selected Card View New Item Column Header Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardNewItemColumnHeaderText_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />	
+
+
+	<!--@ Card View Header Background Brush -->
+	<LinearGradientBrush x:Key="C1DataGrid_CardHeader_Brush" StartPoint="0,0" EndPoint="0,1" PresentationOptions:Freeze="true">
+		<GradientStop Color="#FFf1f5d9" Offset="0"/>
+		<GradientStop Color="#FFcddca7" Offset="0.48"/>
+		<GradientStop Color="#FFc9d8a3" Offset="0.52"/>
+		<GradientStop Color="#FFb7c691" Offset="1"/>
+	</LinearGradientBrush>		
+	<!--@ Card View Header Background Brush on Mouseover -->
+	<LinearGradientBrush x:Key="C1DataGrid_CardHeader_HoverBrush" StartPoint="0,0" EndPoint="0,1" PresentationOptions:Freeze="true">
+		<GradientStop Color="#FFf1f5d9" Offset="0"/>
+		<GradientStop Color="#FFcddca7" Offset="0.48"/>
+		<GradientStop Color="#FFc9d8a3" Offset="0.52"/>
+		<GradientStop Color="#FFb7c691" Offset="1"/>
+	</LinearGradientBrush>
+	<!--@ Selected Card View Header Background Brush -->
+	<LinearGradientBrush  x:Key="C1DataGrid_CardHeader_SelectedBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#FFb0c28c" Offset="0"/>
+		<GradientStop Color="#FF8da06b" Offset="0.48"/>
+		<GradientStop Color="#FF85996b" Offset="0.52"/>
+		<GradientStop Color="#FF637a6b" Offset="1"/>
+	</LinearGradientBrush>
+	<!--@ Selected Card View Header Background Brush on Mouseover -->
+	<LinearGradientBrush  x:Key="C1DataGrid_CardHeader_SelectedHoverBrush" PresentationOptions:Freeze="True" EndPoint="0,1" StartPoint="0,0" >
+		<GradientStop Color="#FFb0c28c" Offset="0"/>
+		<GradientStop Color="#FF8da06b" Offset="0.48"/>
+		<GradientStop Color="#FF85996b" Offset="0.52"/>
+		<GradientStop Color="#FF637a6b" Offset="1"/>
+	</LinearGradientBrush>	
+	<!--@ Card View Header Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardHeaderBorder_Brush" PresentationOptions:Freeze="True" Color="#FF608058" />		
+	<!--@ Card View Header Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardHeaderBorder_HoverBrush" PresentationOptions:Freeze="True" Color="#FF608058" />		
+	<!--@ Selected Card View Header Border Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardHeaderBorder_SelectedBrush" PresentationOptions:Freeze="True" Color="#FF608058" />		
+	<!--@ Selected Card View Header Border Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardHeaderBorder_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FF608058" />		
+	<!--@ Card View Header Border Thickness (All 4 Edges) -->
+	<Thickness x:Key="C1DataGrid_CardHeaderBorder_Thickness">1,1,1,2.5</Thickness>
+	<!--@ Card View Header Border Corner Radius (All 4 Corners) -->
+	<CornerRadius x:Key="C1DataGrid_CardHeaderBorder_CornerRadius">3,3,0,0</CornerRadius>			
+	<!--@ Card View Header Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardHeaderText_Brush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Card View Header Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardHeaderText_HoverBrush" PresentationOptions:Freeze="True" Color="#FF000000" />		
+	<!--@ Selected Card View Header Text Brush -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardHeaderText_SelectedBrush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />		
+	<!--@ Selected Card View Header Text Brush on Mouseover -->
+	<SolidColorBrush  x:Key="C1DataGrid_CardHeaderText_SelectedHoverBrush" PresentationOptions:Freeze="True" Color="#FFFFFFFF" />
+
+
+	<!--@ Selected Cell Frame Brush -->
+	<SolidColorBrush x:Key="C1DataGrid_CellSelectionFrame_Brush" Color="Transparent" />
+	<!--@ Selected Cell Frame Brush on Mouseover -->
+	<SolidColorBrush x:Key="C1DataGrid_CellSelectionFrame_HoverBrush" Color="Transparent" />
+	<!--@ Selected Cell Frame Extra Thickness (added to vertical and horizontal grid line
+		thicknesses, all 4 Edges) -->
+	<Thickness x:Key="C1DataGrid_CellSelectionFrame_ExtraThickness">0</Thickness>
+
+</ResourceDictionary>

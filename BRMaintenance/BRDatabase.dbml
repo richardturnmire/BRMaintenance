@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="BusinessReports" Class="BRDatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=TMS0SRVA\TMS1200;Initial Catalog=BusinessReports;Persist Security Info=True;User ID=tms1200dbo" SettingsObjectName="BRMaintenance.MySettings" SettingsPropertyName="BusinessReportsConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Batchtbl" Member="Batchtbls">
+    <Type Name="Batchtbl">
+      <Column Name="ProcessDt" Type="System.DateTime" DbType="SmallDateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="WorkSource" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BatchNum" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Status" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SiteID" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DetailTbl" Member="DetailTbls">
+    <Type Name="DetailTbl">
+      <Column Name="SiteId" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProcessDt" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="WorkSource" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BatchNumber" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TranNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SeqNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SubSeqNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="P1ImgSeqNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="P2ImgSeqNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemType" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="BatchType" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="UserString1" Type="System.String" DbType="Char(40)" CanBeNull="true" />
+      <Column Name="UserString2" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="UserString3" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="UserString4" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="UserString5" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="UserString6" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="UserString7" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="UserString8" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="UserField1" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="UserField2" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="UserInt1" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="UserInt2" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="UserInt3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserFlag1" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="UserFlag2" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="UserFlag3" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Wrksrctbl" Member="Wrksrctbls">
+    <Type Name="Wrksrctbl">
+      <Column Name="WorksrcNum" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="Char(16) NOT NULL" CanBeNull="false" />
+      <Column Name="ImagePath" Type="System.String" DbType="Char(60)" CanBeNull="true" />
+      <Column Name="XmlPath" Type="System.String" DbType="Char(60)" CanBeNull="true" />
+      <Column Name="AutoTrans" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

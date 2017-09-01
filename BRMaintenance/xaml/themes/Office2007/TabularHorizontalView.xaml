@@ -1,0 +1,66 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="http://schemas.componentone.com/wpf/C1DataGrid"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    >
+
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="/xaml/themes/Office2007/Common.xaml" />
+	</ResourceDictionary.MergedDictionaries>
+
+	<Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:C1DataGrid},
+			ResourceId=TabularHorizontalViewStyleBase}" TargetType="{x:Type local:C1DataGrid}"
+      BasedOn="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type local:C1DataGrid},
+			ResourceId=Office2007CellDefinitionsStyle}}">
+		<Setter Property="Template" Value="{StaticResource DefaultGridTemplate}"/>
+		<Setter Property="SplitCellTemplate" Value="{StaticResource DefaultHorizontalSplitCellTemplate}"/>
+		<Setter Property="ItemsPanelTemplate" 
+            Value="{StaticResource DefaultHorizontalItemsPanelTemplate}"/>
+		<Setter Property="ItemTemplate" Value="{StaticResource Office2007HorizontalItemTemplate}"/>
+		<Setter Property="ItemCellTemplate" 
+            Value="{StaticResource Office2007HorzItemCellTemplate}"/>
+		<Setter Property="FixedNewItemCellTemplate" 
+            Value="{StaticResource Office2007FixedNewItemCellTemplate}"/>
+		<Setter Property="FixedNewItemTemplate" Value="{StaticResource Office2007HorzFixedNewItemTemplate}"/>
+		<Setter Property="GroupStyles" Value="{StaticResource Office2007HorizontalGroupStyles}"/>
+		<Setter Property="CellsAutoLayoutPanelTemplate" 
+            Value="{StaticResource DefaultVerticalCellsLayoutPanelTemplate}"/>
+		<Setter Property="HeaderCellHeight" 
+            Value="{StaticResource DefaultColumnHeight}"/>
+		<Setter Property="SyncItemCellHeightToHeader" Value="true"/>
+		<Setter Property="ItemCellMinWidth" 
+            Value="{StaticResource DefaultMinItemCellWidth}"/>
+		<Setter Property="UniversalItemContentTemplate" 
+            Value="{StaticResource Office2007UniversalHorzItemContentTemplate}"/>
+		<Setter Property="CurrentItemIndicatorTemplate" 
+            Value="{StaticResource HorizontalItemsCurrentIndicatorTemplate}"/>
+		<Setter Property="HeaderTemplate" 
+            Value="{StaticResource Office2007HeaderHorzTemplate}"/>
+		<Setter Property="AllowHorizontalColumnSizing" Value="false"/>
+		<Setter Property="AllowVerticalColumnSizing" Value="true"/>
+		<Setter Property="MoveColumnBeforeAdornerTemplate" 
+            Value="{StaticResource MoveVerticalColumnBeforeAdornerTemplate}"/>
+		<Setter Property="MoveColumnAfterAdornerTemplate"    
+            Value="{StaticResource MoveVerticalColumnAfterAdornerTemplate}"/>
+		<Setter Property="ListCellsAutoLayoutPanelTemplate" 
+            Value="{StaticResource DefaultVerticalListlCellsLayoutPanelTemplate}"/>
+		<Setter Property="FilterBarTemplate" 
+            Value="{StaticResource DefaultHizontalFilterBarTemplate}"/>
+
+		<!-- Suppress default style definitions -->
+		<Setter Property="HeaderCellWidth" Value="NaN"/>
+		<Setter Property="SyncItemCellWidthToHeader" Value="false"/>
+	</Style>
+
+	<Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:C1DataGrid},
+			ResourceId=TabularHorizontalViewStyle}" TargetType="{x:Type local:C1DataGrid}"
+      BasedOn="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type local:C1DataGrid},
+			ResourceId=TabularHorizontalViewStyleBase}}">
+		<Setter Property="ChildGridStyle" 
+			Value="{StaticResource {ComponentResourceKey 
+			TypeInTargetAssembly={x:Type local:C1DataGrid},
+			ResourceId=TabularHorizontalViewStyleBase}}"/>
+	</Style>
+
+
+</ResourceDictionary>

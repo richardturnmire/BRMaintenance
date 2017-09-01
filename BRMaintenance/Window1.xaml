@@ -1,0 +1,151 @@
+﻿<Window x:Class="Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:c1sched="http://schemas.componentone.com/wpf/C1Schedule"
+	xmlns:c1grid="http://schemas.componentone.com/wpf/C1DataGrid"
+           
+   
+    xmlns:local="clr-namespace:BRMaintenance"
+
+    Title="Business Reports Maintenance" Height="600" Width="Auto" SizeToContent="WidthAndHeight"
+        SnapsToDevicePixels="False" WindowStartupLocation="Manual" WindowStyle="ThreeDBorderWindow" MinWidth="800" MinHeight="600" BorderBrush="Black" BorderThickness="5"
+        MaxHeight="1920" MaxWidth="2048" Top="0" Topmost="False" Left="0"
+        VerticalAlignment="Stretch" VerticalContentAlignment="Stretch"
+        Visibility="Visible"
+        HorizontalContentAlignment="Stretch"
+        Margin="0"
+		xmlns:c1sched1="http://schemas.componentone.com/wpf/C1Schedule"
+		xmlns:c1grid1="http://schemas.componentone.com/wpf/C1DataGrid"
+		
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" Style="{Binding Path=Style.BasedOn.BasedOn.BasedOn, ElementName=window, Mode=Default}" x:Name="window"
+		
+		>
+
+    <Window.Resources>
+        <CollectionViewSource Source="{Binding}" x:Key="BatchView"  />
+        <CollectionViewSource Source="{Binding}" x:Key="DetailView" />
+        <CollectionViewSource Source="{Binding}" x:Key="WorksrcView"  />
+		
+        <ResourceDictionary x:Key="MyDictionary">
+    		<ResourceDictionary.MergedDictionaries>
+    			<ResourceDictionary Source="/xaml/themes/Office2007/CardView.xaml"/>
+    		</ResourceDictionary.MergedDictionaries>
+    	</ResourceDictionary>
+        <ObjectDataProvider x:Key="DetailTblDS" ObjectType="{x:Type local:DetailTbl}" d:IsDataSource="True"/>
+        <ControlTemplate x:Key="ControlTemplate1">
+        	<Grid/>
+        </ControlTemplate>
+
+    </Window.Resources>
+      
+    <Grid Background="DarkSeaGreen" Height="768" Width="1024" VerticalAlignment="Stretch" IsEnabled="True" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="601.688" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65" />
+            <RowDefinition Height="464.5*" />
+        </Grid.RowDefinitions>
+
+        <Grid  x:Name="Grid1" Margin="10,10,10,10" ShowGridLines="True" Height="Auto" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" 
+               Background="Azure" d:LayoutOverrides="GridBox" Width="Auto">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" HorizontalAlignment="Stretch" >
+                <StackPanel Margin="0" x:Name="StackPanel1" Orientation="Horizontal" 
+                             HorizontalAlignment="Left" Width="200" >
+                    <Label FontSize="14" Height="25" x:Name="Label1" Width="Auto" Content="Date"/>
+                    <c1sched1:C1DateTimePicker BorderBrush="Black" BorderThickness="5" FontSize="14" Height="40"
+                        x:Name="C1DateTimePicker1" ShowTimePicker="False"
+                        Theme="{DynamicResource {ComponentResourceKey ResourceId=Aero.NormalColor, TypeInTargetAssembly={x:Type c1sched1:C1CalendarBase}}}"
+                        VerticalContentAlignment="Bottom" Width="Auto" />
+                </StackPanel>
+                <StackPanel Margin="0" x:Name="StackPanel2" Orientation="Horizontal"
+                    HorizontalAlignment="Left" Width="300" >
+                    <Label FontSize="14" Height="25" x:Name="Label2" Width="Auto" Content="Worksource"/>
+                    <ComboBox BorderBrush="Black" BorderThickness="5" FontSize="14" Height="40"
+                        ItemsSource="{Binding Source={StaticResource WorksrcView}}" x:Name="WorksrcCombo"
+                        SelectedValue="{Binding Path=WorksrcNum}" SelectedValuePath="WorksrcNum" Width="Auto" MinWidth="200">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="Worksrc" Text="{Binding Path=WorksrcNum}" />
+                                    <TextBlock Width="5"><Run Text="-"/></TextBlock>
+                                    <TextBlock x:Name="Name" Text="{Binding Path=Name}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Margin="0" x:Name="StackPanel3" Orientation="Horizontal"
+                             HorizontalAlignment="Left" Width="220" >
+                    <Label FontSize="14" Height="25" x:Name="Label3" Width="Auto" Content="Batches"/>
+                    <ComboBox BorderBrush="Black" BorderThickness="5" FontSize="14" Height="40" IsDropDownOpen="False"
+                        ItemsSource="{Binding Source={StaticResource BatchView}}" x:Name="ComboBox2"
+                        SelectedValue="{Binding Path=BatchNum}" SelectedValuePath="BatchNum" Width="Auto" MinWidth="150">
+
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="BatchNo" Text="{Binding Path=BatchNum}" />
+                                    <TextBlock Width="5" />
+                                    <TextBlock x:Name="Status" Text="{Binding Path=Status}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                               
+                <StackPanel x:Name="StackPanel5" Orientation="Horizontal"
+                             HorizontalAlignment="Left" Width="350" Margin="40,0,0,0"
+                        VerticalAlignment="Center" >
+                <Button  x:Name="Button1" FontSize="14" BorderThickness="5"   Visibility="Hidden"
+                        ContentStringFormat="Reset Batch {0}" BorderBrush="Black" Height="40"
+                        VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="200"
+                        HorizontalContentAlignment="Left"/>
+                <Button  x:Name="Button2" FontSize="14" BorderThickness="5"   Visibility="Hidden"  Margin="10,0,0,0"
+                        Content="Save Changes" BorderBrush="Black" Width="141.097" Height="40" 
+                        VerticalContentAlignment="Center" HorizontalAlignment="Right"
+                            HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+            </StackPanel>
+
+        </Grid>
+
+        <c1grid1:C1DataGrid x:Name="C1DataGrid1"
+                           Grid.Row="1"
+                           BorderThickness="5"
+                           BorderBrush="Black"
+                           ItemsSource="{Binding Mode=OneWay, Source={StaticResource DetailTblDS}}"
+                           AllowVerticalColumnSizing="False"
+                           FilterBarVisibility="Collapsed"
+                           NewRowPlacement="LastItem"
+                           RowHeaderVisibility="Collapsed"
+                           VerticalContentAlignment="Top"
+                           FontSize="14"
+                           SyncItemCellWidthToHeader="False"
+                           AllowVerticalSplit="False"
+                           AllowHorizontalSplit="False"
+                           AllowColumnMove="False"
+                           AllowHierarchicalData="False"
+                           AllowHorizontalSplitSizing="False"
+                           AllowVerticalSplitSizing="False"
+                           Padding="0"
+                           OverridesDefaultStyle="False"
+                           HorizontalScrollbarPlacement="Top"
+                           AutoGenerateColumns="False"
+                           AllowGroupBy="False"
+                           AllowSort="False"
+                           GroupByVisibility="Collapsed"
+                           HorizontalContentAlignment="Stretch"
+                           GroupByCaption=""
+                           TitleColumnName="SeqNo"
+                           Visibility="Visible"
+                          
+                           FontWeight="Bold"
+                           SyncItemCellHeightToHeader="False"
+                           Margin="11,-1,9,263" Theme="{DynamicResource {c1grid1:C1ThemeKey ThemeName=Vista, TypeInTargetAssembly={x:Type c1grid1:C1DataGrid}}}" DataContext="{DynamicResource DetailView}" AllowDelete="False" ChildGridStyle="{DynamicResource {ComponentResourceKey ResourceId=CardViewStyle, TypeInTargetAssembly={x:Type c1grid1:C1DataGrid}}}" Style="{DynamicResource {ComponentResourceKey ResourceId=CardViewStyle, TypeInTargetAssembly={x:Type c1grid1:C1DataGrid}}}" Grid.ColumnSpan="2" ItemTemplate="{DynamicResource ControlTemplate1}"/>
+
+
+    </Grid>
+
+</Window>

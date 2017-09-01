@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="BRDatabase">
+  <DataContextMoniker Name="/BRDatabaseDataContext" />
+  <nestedChildShapes>
+    <classShape Id="6d7d3243-8544-4cac-b33a-465c5a7d11c8" absoluteBounds="0.5, 3, 2, 1.5891951497395831">
+      <DataClassMoniker Name="/BRDatabaseDataContext/Batchtbl" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fbd1279a-e0cf-4612-ad0e-d7259a98dbc2" absoluteBounds="0.51500000000000012, 3.46, 1.9700000000000002, 1.0291951497395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="161817b1-f9aa-4dc2-b1f4-18ccbee33922" absoluteBounds="3.25, 0.5, 2, 5.8622257486979157">
+      <DataClassMoniker Name="/BRDatabaseDataContext/DetailTbl" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f579154d-777b-4f74-b842-0294b9140cd2" absoluteBounds="3.265, 0.96, 1.9700000000000002, 5.3022257486979161" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3f7d1e18-cd57-4523-a5b1-2829a32353c2" absoluteBounds="0.5, 0.5, 2, 1.5891951497395831">
+      <DataClassMoniker Name="/BRDatabaseDataContext/Wrksrctbl" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f8b68d04-71d5-40e6-84c9-e8824b9089a8" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 1.0291951497395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

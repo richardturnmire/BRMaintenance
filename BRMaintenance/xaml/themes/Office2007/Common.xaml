@@ -1,0 +1,2210 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="http://schemas.componentone.com/wpf/C1DataGrid"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    >
+
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="/xaml/themes/Shared/Shared.xaml" />
+		<ResourceDictionary Source="/xaml/themes/Office2007/Indicators.xaml" />
+		<ResourceDictionary Source="/xaml/themes/Office2007/Splitters.xaml" />
+	</ResourceDictionary.MergedDictionaries>
+	
+	<!-- Themes -->
+	<ResourceDictionary x:Key="{x:Static local:ThemeKeys.Office2007Blue}" 
+		Source="/xaml/themes/Office2007/Themes/Office2007Blue.xaml" />
+	<ResourceDictionary x:Key="{x:Static local:ThemeKeys.Office2007Silver}" 
+		Source="/xaml/themes/Office2007/Themes/Office2007Silver.xaml" />
+	<ResourceDictionary x:Key="{x:Static local:ThemeKeys.Office2007Black}" 
+		Source="/xaml/themes/Office2007/Themes/Office2007Black.xaml" />
+	<ResourceDictionary x:Key="{x:Static local:ThemeKeys.Office2003Classic}" 
+		Source="/xaml/themes/Office2007/Themes/Office2003Classic.xaml" />
+	<ResourceDictionary x:Key="{x:Static local:ThemeKeys.Office2003Blue}" 
+		Source="/xaml/themes/Office2007/Themes/Office2003Blue.xaml" />
+	<ResourceDictionary x:Key="{x:Static local:ThemeKeys.Office2003Olive}" 
+		Source="/xaml/themes/Office2007/Themes/Office2003Olive.xaml" />
+	<ResourceDictionary x:Key="{x:Static local:ThemeKeys.Office2003Royale}" 
+		Source="/xaml/themes/Office2007/Themes/Office2003Royale.xaml" />
+	<ResourceDictionary x:Key="{x:Static local:ThemeKeys.Office2003Silver}" 
+		Source="/xaml/themes/Office2007/Themes/Office2003Silver.xaml" />
+	<ResourceDictionary x:Key="{x:Static local:ThemeKeys.DuskBlue}" 
+		Source="/xaml/themes/Office2007/Themes/DuskBlue.xaml" />
+	<ResourceDictionary x:Key="{x:Static local:ThemeKeys.DuskGreen}" 
+		Source="/xaml/themes/Office2007/Themes/DuskGreen.xaml" />
+	<ResourceDictionary x:Key="{x:Static local:ThemeKeys.MediaPlayer}" 
+		Source="/xaml/themes/Office2007/Themes/MediaPlayer.xaml" />
+	<ResourceDictionary x:Key="{x:Static local:ThemeKeys.Vista}" 
+		Source="/xaml/themes/Office2007/Themes/Vista.xaml" />
+	<ResourceDictionary x:Key="{x:Static local:ThemeKeys.Office2007Default}" 
+		Source="/xaml/themes/Office2007/Themes/Office2007Default.xaml" />
+
+	<!--
+	<ResourceDictionary x:Key="{x:Static local:ThemeKeys.DuskBlueNoRound}" 
+		Source="/xaml/themes/Office2007/Themes/DuskBlueNoRound.xaml" />
+		-->
+
+
+	<DataTemplate x:Key="Office2007GroupHeaderTemplate">
+		<Border Name="headerBorder"
+			Background="{DynamicResource C1DataGrid_GroupHeader_Brush}"
+			BorderThickness="{DynamicResource C1DataGrid_GroupHeaderBorder_Thickness}"
+			BorderBrush="{DynamicResource C1DataGrid_GroupHeaderBorder_Brush}"
+			CornerRadius="{DynamicResource C1DataGrid_GroupHeaderBorder_CornerRadius}"
+			TextElement.Foreground="{DynamicResource C1DataGrid_GroupHeaderText_Brush}"
+			Padding="5, 2,5,2" >
+				<TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+		</Border>
+		<DataTemplate.Triggers>
+			<Trigger SourceName="headerBorder" Property="IsMouseOver"
+									Value="true">
+				<Setter TargetName="headerBorder" Property="Background"
+										Value="{DynamicResource C1DataGrid_GroupHeader_HoverBrush}"/>
+				<Setter TargetName="headerBorder" Property="BorderBrush"
+										Value="{DynamicResource C1DataGrid_GroupHeaderBorder_HoverBrush}"/>
+				<Setter TargetName="headerBorder" 
+									    Property="TextElement.Foreground"
+										Value="{DynamicResource C1DataGrid_GroupHeaderText_HoverBrush}"/>
+			</Trigger>
+		</DataTemplate.Triggers>
+	</DataTemplate>
+
+	<GroupStyle  x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:C1DataGrid},
+			ResourceId=Office2007VerticalGroupStyle0}" 
+			HeaderTemplate="{StaticResource Office2007GroupHeaderTemplate}">
+		<GroupStyle.Panel>
+			<ItemsPanelTemplate>
+			<!-- pf1 -->
+				<local:C1VirtualizingStackPanel />
+				<!--
+				<VirtualizingStackPanel/>
+				-->
+			</ItemsPanelTemplate>
+		</GroupStyle.Panel>
+
+		<GroupStyle.ContainerStyle>
+			<Style TargetType="{x:Type GroupItem}" >
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type GroupItem}">
+							<Expander IsExpanded="true"  >
+								<Expander.Header>
+									<ContentPresenter/>
+								</Expander.Header>
+								<Grid Name="childItemsGrid"	 Margin="10,0,0,0">
+									<Grid.RowDefinitions>
+										<RowDefinition Height="Auto"/>
+										<RowDefinition />
+									</Grid.RowDefinitions>
+									<Border Name="horzGridLine" 
+										Height="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}"
+										Background="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"
+										HorizontalAlignment="Stretch"/>
+									<local:GridItemsPanelPresenter Name="itemsPresenter"
+										Grid.Row="1"/>
+								</Grid>
+							</Expander>
+							<ControlTemplate.Triggers>
+								<Trigger SourceName="itemsPresenter" 
+									Property="RepresentsGroupItems" Value="true">
+									<Setter TargetName="horzGridLine" 
+										Property="Height" Value="0"/>
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+		</GroupStyle.ContainerStyle>
+	</GroupStyle >
+
+	<local:GroupStyleCollection x:Key="Office2007VerticalGroupStyles">
+		<StaticResourceExtension ResourceKey="{ComponentResourceKey TypeInTargetAssembly={x:Type local:C1DataGrid},
+			ResourceId=Office2007VerticalGroupStyle0}"/>
+	</local:GroupStyleCollection>
+
+
+	<GroupStyle  x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:C1DataGrid},
+			ResourceId=Office2007HorizontalGroupStyle0}" 
+			HeaderTemplate="{StaticResource Office2007GroupHeaderTemplate}">
+		<GroupStyle.Panel>
+			<ItemsPanelTemplate>
+				<local:C1VirtualizingStackPanel Orientation="Horizontal"/>
+			</ItemsPanelTemplate>
+		</GroupStyle.Panel>
+
+		<GroupStyle.ContainerStyle>
+			<Style TargetType="{x:Type GroupItem}" >
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type GroupItem}">
+							<Expander IsExpanded="true" Margin="0,5,0,0"
+								HorizontalAlignment="Stretch">
+								<Expander.Header>
+									<ContentPresenter/>
+								</Expander.Header>
+								<Grid  Name="childItemsGrid" Margin="20, 3, 0,0">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="Auto"/>
+										<ColumnDefinition/>
+									</Grid.ColumnDefinitions>
+									<Border Name="vertGridLine"  
+										Width="{DynamicResource C1DataGrid_GridLineVertical_Thickness}"
+										Background="{DynamicResource C1DataGrid_GridLineVertical_Brush}"
+										VerticalAlignment="Stretch">
+									</Border>
+									<local:GridItemsPanelPresenter Name="itemsPresenter"
+										Grid.Column="1"/>
+								</Grid>
+							</Expander>
+							<ControlTemplate.Triggers>
+								<Trigger SourceName="itemsPresenter" 
+									Property="RepresentsGroupItems" Value="true">
+										<Setter TargetName="vertGridLine" Property="Width"	
+											Value="0"/>
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+		</GroupStyle.ContainerStyle>
+
+	</GroupStyle >
+
+	<local:GroupStyleCollection x:Key="Office2007HorizontalGroupStyles">
+		<StaticResourceExtension ResourceKey="{ComponentResourceKey TypeInTargetAssembly={x:Type local:C1DataGrid},
+			ResourceId=Office2007HorizontalGroupStyle0}"/>
+	</local:GroupStyleCollection>
+
+	<GroupStyle  x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:C1DataGrid},
+			ResourceId=Office2007CardGroupStyle0}" 
+			HeaderTemplate="{StaticResource Office2007GroupHeaderTemplate}">
+		<GroupStyle.Panel>
+			<ItemsPanelTemplate>
+				<local:C1VirtualizingStackPanel Orientation="Horizontal"/>
+			</ItemsPanelTemplate>
+		</GroupStyle.Panel>
+
+		<GroupStyle.ContainerStyle>
+			<Style TargetType="{x:Type GroupItem}" >
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type GroupItem}">
+							<Expander IsExpanded="true" Margin="0,5,0,0">
+								<Expander.Header>
+									<ContentPresenter Margin="0, 0, 3, 0"/>
+								</Expander.Header>
+								<local:GridItemsPanelPresenter Name="itemsPresenter" Margin="20, 3, 0,0"/>
+							</Expander>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+		</GroupStyle.ContainerStyle>
+
+	</GroupStyle >
+
+	<local:GroupStyleCollection x:Key="Office2007CardGroupStyles">
+		<StaticResourceExtension ResourceKey="{ComponentResourceKey TypeInTargetAssembly={x:Type local:C1DataGrid},
+			ResourceId=Office2007CardGroupStyle0}"/>
+	</local:GroupStyleCollection>
+
+
+
+	<!-- (C1Datarid.HeaderCellTemplate property) -->
+	<ControlTemplate x:Key="Office2007HeaderCellTemplate" TargetType="local:CaptionCellPresenterBase">
+		<Grid Name="grid">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			<Border Name="brd"  
+				BorderThickness="{DynamicResource C1DataGrid_ColumnHeaderBorder_Thickness}" 
+				BorderBrush="{DynamicResource C1DataGrid_ColumnHeaderBorder_Brush}"  
+				Background="{DynamicResource C1DataGrid_ColumnHeader_Brush}"
+				CornerRadius="{DynamicResource C1DataGrid_ColumnHeaderBorder_CornerRadius}"
+				TextElement.Foreground="{DynamicResource C1DataGrid_ColumnHeaderText_Brush}">
+				<local:HeaderCellContentPresenter/>
+			</Border>
+			<Border Grid.Column="1" Grid.RowSpan="2"  
+				Width="{DynamicResource C1DataGrid_GridLineVertical_Thickness}" 
+				Background="{DynamicResource C1DataGrid_GridLineVertical_Brush}"
+				VerticalAlignment="Stretch"/>
+			<Border Grid.ColumnSpan="2" Grid.Row="1"  
+				Height="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}" 
+				Background="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"
+				HorizontalAlignment="Stretch"/>
+			<local:ColumnResizer Grid.ColumnSpan="2" Grid.RowSpan="2"
+				HorizontalAlignment="Right" Width="5" 
+                           ResizingDirection="Horizontal"/>
+			<local:ColumnResizer Grid.RowSpan="2" Grid.ColumnSpan="2"
+				VerticalAlignment="Bottom"  
+				Height="5" ResizingDirection="Vertical" />
+		</Grid>
+		<ControlTemplate.Triggers>
+			<MultiDataTrigger>
+				<MultiDataTrigger.Conditions>
+					<Condition Binding="{Binding Column.IsSelected}" Value="false"/>
+					<Condition Binding="{Binding Path=IsMouseOver, ElementName=grid}" 
+						Value="true"/>
+				</MultiDataTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_ColumnHeader_HoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_ColumnHeaderBorder_HoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground" 
+					Value="{DynamicResource C1DataGrid_ColumnHeaderText_HoverBrush}"/>
+			</MultiDataTrigger>
+
+			<MultiDataTrigger>
+				<MultiDataTrigger.Conditions>
+					<Condition Binding="{Binding Column.IsSelected}" Value="true"/>
+					<Condition Binding="{Binding Path=IsMouseOver, ElementName=grid}" 
+						Value="true"/>
+				</MultiDataTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_ColumnHeader_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_ColumnHeaderBorder_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground" 
+					Value="{DynamicResource C1DataGrid_ColumnHeaderText_SelectedHoverBrush}"/>
+			</MultiDataTrigger>
+
+			<MultiDataTrigger>
+				<MultiDataTrigger.Conditions>
+					<Condition Binding="{Binding Column.IsSelected}" Value="true"/>
+					<Condition Binding="{Binding Path=IsMouseOver, ElementName=grid}" 
+						Value="false"/>
+				</MultiDataTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_ColumnHeader_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_ColumnHeaderBorder_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground" 
+					Value="{DynamicResource C1DataGrid_ColumnHeaderText_SelectedBrush}"/>
+			</MultiDataTrigger>
+
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+
+	<!-- (C1Datarid.GroupByCellTemplate property) -->
+	<ControlTemplate x:Key="Office2007GroupByCellTemplate" TargetType="local:GroupByCellPresenter">
+		<Border Name="brd"  
+			BorderThickness="{DynamicResource C1DataGrid_ColumnHeaderGroupAreaBorder_Thickness}" 
+			BorderBrush="{DynamicResource C1DataGrid_ColumnHeaderGroupAreaBorder_Brush}"  
+			Background="{DynamicResource C1DataGrid_ColumnHeaderGroupArea_Brush}"
+			CornerRadius="{DynamicResource C1DataGrid_ColumnHeaderGroupAreaBorder_CornerRadius}"
+			TextElement.Foreground="{DynamicResource C1DataGrid_ColumnHeaderGroupAreaText_Brush}">
+				<local:GroupByCellContentPresenter/>
+		</Border>
+		<ControlTemplate.Triggers>
+			<MultiDataTrigger>
+				<MultiDataTrigger.Conditions>
+					<Condition Binding="{Binding Column.IsSelected}" Value="false"/>
+					<Condition Binding="{Binding Path=IsMouseOver, ElementName=brd}" 
+						Value="true"/>
+				</MultiDataTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_ColumnHeaderGroupArea_HoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_ColumnHeaderGroupAreaBorder_HoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground" 
+					Value="{DynamicResource C1DataGrid_ColumnHeaderGroupAreaText_HoverBrush}"/>
+			</MultiDataTrigger>
+
+			<MultiDataTrigger>
+				<MultiDataTrigger.Conditions>
+					<Condition Binding="{Binding Column.IsSelected}" Value="true"/>
+					<Condition Binding="{Binding Path=IsMouseOver, ElementName=brd}" 
+						Value="true"/>
+				</MultiDataTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_ColumnHeaderGroupArea_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_ColumnHeaderGroupAreaBorder_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground" 
+					Value="{DynamicResource C1DataGrid_ColumnHeaderGroupAreaText_SelectedHoverBrush}"/>
+			</MultiDataTrigger>
+
+			<MultiDataTrigger>
+				<MultiDataTrigger.Conditions>
+					<Condition Binding="{Binding Column.IsSelected}" Value="true"/>
+					<Condition Binding="{Binding Path=IsMouseOver, ElementName=brd}" 
+						Value="false"/>
+				</MultiDataTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_ColumnHeaderGroupArea_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_ColumnHeaderGroupAreaBorder_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground" 
+					Value="{DynamicResource C1DataGrid_ColumnHeaderGroupAreaText_SelectedBrush}"/>
+			</MultiDataTrigger>
+
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+
+	<!-- (C1Datarid.HeaderCellContentTemplate property) -->
+	<ControlTemplate x:Key="Office2007HeaderCellContentTemplate">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+			<TextBlock Text="{Binding Column.Caption}" Margin="5" TextWrapping="Wrap" />
+			<local:SortDirectionIndicator Grid.Column="1" Margin="5"/>
+		</Grid>
+	</ControlTemplate>
+
+	<ControlTemplate x:Key="Office2007ItemCellTemplate" 
+		TargetType="local:ItemCellPresenter">
+		<DockPanel SnapsToDevicePixels="True">
+			<Rectangle DockPanel.Dock="Right"
+				Width="{DynamicResource C1DataGrid_GridLineVertical_Thickness}" 
+				Fill="{DynamicResource C1DataGrid_GridLineVertical_Brush}" 
+				VerticalAlignment="Stretch" HorizontalAlignment="Right"
+				Margin="0,-1,0,-1"/>
+			<Border Name="brd"  
+				BorderThickness="{DynamicResource C1DataGrid_CellBorder_Thickness}" 
+				BorderBrush="{DynamicResource C1DataGrid_CellBorder_Brush}"  
+				Background="{DynamicResource C1DataGrid_Cell_Brush}"
+				CornerRadius="{DynamicResource C1DataGrid_CellBorder_CornerRadius}"
+				TextElement.Foreground="{DynamicResource C1DataGrid_CellText_Brush}">
+				<local:ItemCellContentPresenter/>
+			</Border>
+		</DockPanel>
+		<ControlTemplate.Triggers>
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsSelected" Value="false"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_Cell_HoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_CellBorder_HoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground" 
+					Value="{DynamicResource C1DataGrid_CellText_HoverBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="false"/>
+					<Condition Property="IsSelected" Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_Cell_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_CellBorder_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground" 
+					Value="{DynamicResource C1DataGrid_CellText_SelectedBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsSelected" Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_Cell_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_CellBorder_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground" 
+					Value="{DynamicResource C1DataGrid_CellText_SelectedHoverBrush}"/>
+			</MultiTrigger>
+            <!--
+            <Trigger Property="HasError" Value="true">
+                <Setter TargetName="brd" Property="Background" Value="Red"/>
+                <Setter TargetName="brd" Property="TextElement.Foreground" 
+					Value="White"/>
+                <Setter TargetName="brd" Property="ToolTip" 
+                    Value="{Binding ErrorInfo.ErrorContent}"/>
+            </Trigger>
+            -->
+        </ControlTemplate.Triggers>
+	</ControlTemplate>
+
+	<ControlTemplate x:Key="Office2007HorzItemCellTemplate" 
+		TargetType="local:ItemCellPresenter">
+		<DockPanel SnapsToDevicePixels="False">
+			<Rectangle DockPanel.Dock="Bottom"
+				Height="{DynamicResource C1DataGrid_GridLineVertical_Thickness}" 
+				Fill="{DynamicResource C1DataGrid_GridLineVertical_Brush}" 
+				VerticalAlignment="Bottom" HorizontalAlignment="Stretch"
+				Margin="-1,0,-1,0"/>
+			<Border Name="brd"  
+					BorderThickness="{DynamicResource C1DataGrid_CellBorder_Thickness}" 
+					BorderBrush="{DynamicResource C1DataGrid_CellBorder_Brush}"  
+					Background="{DynamicResource C1DataGrid_Cell_Brush}"
+					CornerRadius="{DynamicResource C1DataGrid_CellBorder_CornerRadius}"
+					TextElement.Foreground="{DynamicResource C1DataGrid_CellText_Brush}">
+				<local:ItemCellContentPresenter/>
+			</Border>
+		</DockPanel>
+		<ControlTemplate.Triggers>
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsSelected" Value="false"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_Cell_HoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_CellBorder_HoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground" 
+					Value="{DynamicResource C1DataGrid_CellText_HoverBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="false"/>
+					<Condition Property="IsSelected" Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_Cell_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_CellBorder_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground" 
+					Value="{DynamicResource C1DataGrid_CellText_SelectedBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsSelected" Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_Cell_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_CellBorder_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground" 
+					Value="{DynamicResource C1DataGrid_CellText_SelectedHoverBrush}"/>
+			</MultiTrigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+
+	<!-- (C1DataGrid.FixedNewItemCellTemplate property) -->
+	<ControlTemplate x:Key="Office2007FixedNewItemCellTemplate" 
+		TargetType="local:FixedNewItemCellPresenter">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+
+			<Border Name="brd" 
+				Background="{DynamicResource C1DataGrid_NewItemCell_Brush}"
+				BorderBrush="{DynamicResource C1DataGrid_NewItemCellBorder_Brush}"
+				BorderThickness="{DynamicResource C1DataGrid_NewItemCellBorder_Thickness}"
+				CornerRadius="{DynamicResource C1DataGrid_NewItemCellBorder_CornerRadius}"
+				TextElement.Foreground="{DynamicResource C1DataGrid_NewItemCellText_Brush}">
+				<local:ItemCellContentPresenter/>
+			</Border>
+			<Border Grid.Column="1" Grid.RowSpan="2"  
+				Width="{DynamicResource C1DataGrid_GridLineVertical_Thickness}" 
+				Background="{DynamicResource C1DataGrid_GridLineVertical_Brush}"
+				VerticalAlignment="Stretch"/>
+			<Border Grid.ColumnSpan="2" Grid.Row="1"  
+				Height="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}" 
+				Background="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"
+				HorizontalAlignment="Stretch"/>
+			<local:ColumnResizer Grid.ColumnSpan="2" Grid.RowSpan="2"
+				HorizontalAlignment="Right" Width="5" 
+                           ResizingDirection="Horizontal"/>
+			<local:ColumnResizer Grid.RowSpan="2" Grid.ColumnSpan="2"
+				VerticalAlignment="Bottom"  
+				Height="5" ResizingDirection="Vertical" />
+		</Grid>
+		<ControlTemplate.Triggers>
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsSelected" Value="false"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItemCell_HoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_NewItemCellBorder_HoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_NewItemCellText_HoverBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="false"/>
+					<Condition Property="IsSelected" Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItemCell_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_NewItemCellBorder_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_NewItemCellText_SelectedBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsSelected" Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItemCell_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_NewItemCellBorder_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_NewItemCellText_SelectedHoverBrush}"/>
+			</MultiTrigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+
+
+	<!-- (C1Datarid.ItemCellShowContentTemplate property) -->
+	<ControlTemplate x:Key="Office2007ItemCellShowContentTemplate">
+		<TextBlock Text="{Binding Value}" TextWrapping="Wrap" Margin="3" TextAlignment="Right" />
+	</ControlTemplate>
+
+	<!-- (C1Datarid.ItemCellEditContentTemplate property) -->
+	<ControlTemplate x:Key="Office2007ItemCellEditContentTemplate">
+		<TextBox Text="{Binding Value}" Margin="0"  TextAlignment="Right" 
+		BorderThickness="0" Background="Transparent" 
+		Foreground="{TemplateBinding Foreground}" 
+		local:C1DataGrid.InitialFocus="true"/>
+	</ControlTemplate>
+
+	<!-- (C1DataGrid.ColumnFilterCellTemplate property) -->
+	<ControlTemplate x:Key="Office2007ColumnFilterCellTemplate" 
+		TargetType="local:ColumnFilterCellPresenter">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			<Border Name="brd"  
+				BorderThickness="{DynamicResource C1DataGrid_FilterCellBorder_Thickness}" 
+				BorderBrush="{DynamicResource C1DataGrid_FilterCellBorder_Brush}"  
+				Background="{DynamicResource C1DataGrid_FilterCell_Brush}"
+				CornerRadius="{DynamicResource C1DataGrid_FilterCellBorder_CornerRadius}"
+				TextElement.Foreground="{DynamicResource C1DataGrid_FilterCellText_Brush}">
+				<local:ColumnFilterCellContentPresenter/>
+			</Border>
+			<Border Grid.Column="1" Grid.RowSpan="2"  
+				Width="{DynamicResource C1DataGrid_GridLineVertical_Thickness}" 
+				Background="{DynamicResource C1DataGrid_GridLineVertical_Brush}"
+				VerticalAlignment="Stretch"/>
+			<Border Grid.ColumnSpan="2" Grid.Row="1"  
+				Height="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}" 
+				Background="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"
+				HorizontalAlignment="Stretch"/>
+			<local:ColumnResizer Grid.ColumnSpan="2" Grid.RowSpan="2"
+				HorizontalAlignment="Right" Width="5" 
+                           ResizingDirection="Horizontal"/>
+			<local:ColumnResizer Grid.RowSpan="2" Grid.ColumnSpan="2"
+				VerticalAlignment="Bottom"  
+				Height="5" ResizingDirection="Vertical" />
+		</Grid>
+		<ControlTemplate.Triggers>
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsKeyboardFocusWithin" Value="false"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_FilterCell_HoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_FilterCellBorder_HoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground" 
+					Value="{DynamicResource C1DataGrid_FilterCellText_HoverBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="false"/>
+					<Condition Property="IsKeyboardFocusWithin" Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_FilterCell_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_FilterCellBorder_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground" 
+					Value="{DynamicResource C1DataGrid_FilterCellText_SelectedBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsKeyboardFocusWithin" Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_FilterCell_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_FilterCellBorder_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground" 
+					Value="{DynamicResource C1DataGrid_FilterCellText_SelectedHoverBrush}"/>
+			</MultiTrigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+    
+    <!-- (C1Datarid.ItemCellErrorAdornerTemplate property) -->
+    <ControlTemplate x:Key="ItemCellErrorAdornerTemplate" TargetType="Control">
+        <local:C1AdornedElementPlaceholder Name="placeHolder" >
+            <Border BorderThickness="1" BorderBrush="Red" 
+                    CornerRadius="{DynamicResource C1DataGrid_CellBorder_CornerRadius}"
+                    >
+                <local:PropertyBridge Source="{Binding ErrorInfo.ErrorContent, Mode=OneWay}"
+                     Target="{Binding AdornedElement.ToolTip, ElementName=placeHolder,
+                        Mode=OneWayToSource}"/>
+            </Border>
+        </local:C1AdornedElementPlaceholder>
+    </ControlTemplate>
+
+	<!-- For horizontal cells distribution 
+	(C1Datarid.UniversalItemContentTemplate property) -->
+	<ControlTemplate x:Key="Office2007UniversalItemContentTemplate"
+		TargetType="local:GridPartitionItemContent">
+		<StackPanel Orientation="Horizontal" SnapsToDevicePixels="True">
+			<local:ItemChildListsToggle Name="childToggle"/>
+			<Rectangle Width="{DynamicResource C1DataGrid_GridLineVertical_Thickness}"
+				Fill="{DynamicResource C1DataGrid_GridLineVertical_Brush}"
+				VerticalAlignment="Stretch" Margin="0,-1,0,-1"/>
+			<DockPanel>
+				<local:CellsAutoLayoutPresenter DockPanel.Dock="Top"/>
+				<local:ListCellsAutoLayoutPresenter 
+				Visibility="{Binding ElementName=childToggle, Path=ChildListsVisibility}"
+				VerticalAlignment="Top" Margin="10,0,0,0"/>
+			</DockPanel>
+		</StackPanel>
+	</ControlTemplate>
+
+
+		<!-- For vertical cells distribution 
+	(C1Datarid.UniversalItemContentTemplate property) -->
+	<ControlTemplate x:Key="Office2007UniversalHorzItemContentTemplate">
+		<DockPanel>
+			<StackPanel SnapsToDevicePixels="False" DockPanel.Dock="Left">
+				<local:ItemChildListsToggle Name="childToggle"/>
+				<Rectangle 
+					Height="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}"
+					Fill="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"
+					HorizontalAlignment="Stretch" Margin="-1,0,-1,0"/>
+				<local:CellsAutoLayoutPresenter />
+			</StackPanel>
+			<local:ListCellsAutoLayoutPresenter 
+					Visibility="{Binding ElementName=childToggle, Path=ChildListsVisibility}"
+					HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+					Margin="0,20,0,0"/>
+		</DockPanel>
+	</ControlTemplate>
+
+
+	<!-- (C1Datarid.ItemTemplate property) -->
+	<ControlTemplate x:Key="Office2007ItemTemplate" TargetType="local:GridItem">
+		<Border SnapsToDevicePixels="True"
+				BorderThickness="{Binding Source, ElementName=horzGridLineWidth,
+					Converter={x:Static local:DoubleToBottomThicknessConverter.Default}}"
+				BorderBrush="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"
+				>
+			<Border Name="rowBackBrd" Background="{DynamicResource C1DataGrid_Row_Brush}">
+				<StackPanel Orientation="Horizontal">
+				
+					<local:PropertyBridge Name="vertGridLineWidth"
+						Source="{DynamicResource C1DataGrid_GridLineVertical_Thickness}"/>
+					<local:PropertyBridge Name="horzGridLineWidth"
+						Source="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}"/>
+					<Border Visibility="{Binding GridFrame.RowHeaderVisibility,
+                        RelativeSource={RelativeSource TemplatedParent}}"
+                        BorderThickness="{Binding Source, ElementName=vertGridLineWidth,
+						Converter={x:Static local:DoubleToLeftRightThicknessConverter.Default}}" 
+						BorderBrush="{DynamicResource C1DataGrid_GridLineVertical_Brush}"
+						>
+						<Border Name="brd" Width="22"  
+							Background="{DynamicResource C1DataGrid_RowHeader_Brush}"
+							BorderBrush="{DynamicResource C1DataGrid_RowHeaderBorder_Brush}"
+							BorderThickness="{DynamicResource C1DataGrid_RowHeaderBorder_Thickness}"
+							CornerRadius="{DynamicResource C1DataGrid_RowHeaderBorder_CornerRadius}"
+							TextElement.Foreground="{DynamicResource C1DataGrid_RowHeaderText_Brush}">
+							<local:ItemIndicator />
+						</Border>
+					</Border>
+					<local:ItemContentPresenter />
+				</StackPanel>
+			</Border>
+		</Border>
+		<ControlTemplate.Triggers>
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsSelected" Value="false"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_RowHeader_HoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_RowHeaderBorder_HoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_RowHeaderText_HoverBrush}"/>
+				<Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_Row_HoverBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="false"/>
+					<Condition Property="IsSelected"	Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_RowHeader_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_RowHeaderBorder_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_RowHeaderText_SelectedBrush}"/>
+				<Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_Row_SelectedBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsSelected"	Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_RowHeader_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_RowHeaderBorder_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_RowHeaderText_SelectedHoverBrush}"/>
+				<Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_Row_SelectedHoverBrush}"/>
+			</MultiTrigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+
+	<!-- (C1Datarid.ItemTemplate property) -->
+	<ControlTemplate x:Key="Office2007HorizontalItemTemplate" TargetType="local:GridItem">
+		<Border SnapsToDevicePixels="False"
+				BorderThickness="{Binding Source, ElementName=vertGridLineWidth,
+					Converter={x:Static local:DoubleToRightThicknessConverter.Default}}"
+				BorderBrush="{DynamicResource C1DataGrid_GridLineVertical_Brush}"
+				>
+			<Border Name="rowBackBrd" Background="{DynamicResource C1DataGrid_Row_Brush}">
+				<StackPanel >
+					<local:PropertyBridge Name="vertGridLineWidth"
+						Source="{DynamicResource C1DataGrid_GridLineVertical_Thickness}"/>
+					<local:PropertyBridge Name="horzGridLineWidth"
+						Source="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}"/>
+
+					<Border Visibility="{Binding GridFrame.RowHeaderVisibility,
+                            RelativeSource={RelativeSource TemplatedParent}}"
+                        BorderThickness="{Binding Source, 
+						ElementName=horzGridLineWidth,
+						Converter={x:Static local:DoubleToTopBottomThicknessConverter.Default}}" 
+						BorderBrush="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"
+						>
+						<Border Name="brd"  
+							Background="{DynamicResource C1DataGrid_RowHeader_Brush}"
+							BorderBrush="{DynamicResource C1DataGrid_RowHeaderBorder_Brush}"
+							BorderThickness="{DynamicResource C1DataGrid_RowHeaderBorder_Thickness}"
+							CornerRadius="{DynamicResource C1DataGrid_RowHeaderBorder_CornerRadius}"
+							TextElement.Foreground="{DynamicResource C1DataGrid_RowHeaderText_Brush}">
+							<local:ItemIndicator Margin="5" Height="15"/>
+						</Border>
+					</Border>
+					<local:ItemContentPresenter />
+
+				</StackPanel>
+			</Border>
+		</Border>
+		<ControlTemplate.Triggers>
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsSelected" Value="false"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_RowHeader_HoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_RowHeaderBorder_HoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_RowHeaderText_HoverBrush}"/>
+				<Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_Row_HoverBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="false"/>
+					<Condition Property="IsSelected"	Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_RowHeader_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_RowHeaderBorder_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_RowHeaderText_SelectedBrush}"/>
+				<Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_Row_SelectedBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsSelected"	Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_RowHeader_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_RowHeaderBorder_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_RowHeaderText_SelectedHoverBrush}"/>
+				<Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_Row_SelectedHoverBrush}"/>
+			</MultiTrigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+	
+	
+	<!-- (C1Datarid.FixedNewItemTemplate property) -->
+    <ControlTemplate x:Key="Office2007FixedNewItemTemplate" TargetType="local:GridAddNewItem">
+        <Border SnapsToDevicePixels="True"
+				BorderThickness="{Binding Source, ElementName=horzGridLineWidth,
+					Converter={x:Static local:DoubleToBottomThicknessConverter.Default}}"
+				BorderBrush="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"
+				>
+            <Border Name="rowBackBrd" Background="{DynamicResource C1DataGrid_NewItem_Brush}">
+                <StackPanel Orientation="Horizontal">
+
+                    <local:PropertyBridge Name="vertGridLineWidth"
+						Source="{DynamicResource C1DataGrid_GridLineVertical_Thickness}"/>
+                    <local:PropertyBridge Name="horzGridLineWidth"
+						Source="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}"/>
+                    <Border Visibility="{Binding GridFrame.RowHeaderVisibility,
+                        RelativeSource={RelativeSource TemplatedParent}}"
+                        BorderThickness="{Binding Source, ElementName=vertGridLineWidth,
+						Converter={x:Static local:DoubleToLeftRightThicknessConverter.Default}}" 
+						BorderBrush="{DynamicResource C1DataGrid_GridLineVertical_Brush}"
+						>
+                        <Border Name="brd" Width="22"  
+							Background="{DynamicResource C1DataGrid_NewItemRowHeader_Brush}"
+							BorderBrush="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_Brush}"
+							BorderThickness="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_Thickness}"
+							CornerRadius="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_CornerRadius}"
+							TextElement.Foreground="{DynamicResource C1DataGrid_NewItemRowHeaderText_Brush}">
+                            <local:ItemIndicator />
+                        </Border>
+                    </Border>
+                    <local:ItemContentPresenter />
+                </StackPanel>
+            </Border>
+        </Border>
+        <ControlTemplate.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="true"/>
+                    <Condition Property="IsSelected" Value="false"/>
+                </MultiTrigger.Conditions>
+                <Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeader_HoverBrush}"/>
+                <Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_HoverBrush}"/>
+                <Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderText_HoverBrush}"/>
+                <Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItem_HoverBrush}"/>
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="false"/>
+                    <Condition Property="IsSelected"	Value="true"/>
+                </MultiTrigger.Conditions>
+                <Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeader_SelectedBrush}"/>
+                <Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_SelectedBrush}"/>
+                <Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderText_SelectedBrush}"/>
+                <Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItem_SelectedBrush}"/>
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="true"/>
+                    <Condition Property="IsSelected"	Value="true"/>
+                </MultiTrigger.Conditions>
+                <Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeader_SelectedHoverBrush}"/>
+                <Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_SelectedHoverBrush}"/>
+                <Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderText_SelectedHoverBrush}"/>
+                <Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItem_SelectedHoverBrush}"/>
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <!--
+	<ControlTemplate x:Key="Office2007FixedNewItemTemplate" TargetType="local:GridAddNewItem">
+			<Grid SnapsToDevicePixels="True" Name="rowBackBrd" 
+				Background="{DynamicResource C1DataGrid_NewItem_Brush}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="22"/>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition />
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+
+				<Border Width="{DynamicResource C1DataGrid_GridLineVertical_Thickness}" 
+					VerticalAlignment="Stretch"
+					Background="{DynamicResource C1DataGrid_GridLineVertical_Brush}"/>
+				<Border Name="brd" Grid.Column="1"
+					Background="{DynamicResource C1DataGrid_NewItemRowHeader_Brush}"
+					BorderBrush="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_Brush}"
+					BorderThickness="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_Thickness}"
+					CornerRadius="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_CornerRadius}"
+					TextElement.Foreground="{DynamicResource C1DataGrid_NewItemRowHeaderText_Brush}">
+						<local:ItemIndicator/>
+				</Border>
+				<Border Grid.Column="2" 
+					Width="{DynamicResource C1DataGrid_GridLineVertical_Thickness}" 
+					VerticalAlignment="Stretch"
+					Background="{DynamicResource C1DataGrid_GridLineVertical_Brush}"/>
+				<Border Grid.ColumnSpan="4" Grid.Row="1"
+					Height="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}" 
+					HorizontalAlignment="Stretch"  VerticalAlignment="Bottom"
+					Background="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"/>
+				<local:ItemContentPresenter Grid.Column="3" Grid.RowSpan="2"/>
+			</Grid>
+		<ControlTemplate.Triggers>
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsSelected" Value="false"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeader_HoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_HoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderText_HoverBrush}"/>
+				<Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItem_HoverBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="false"/>
+					<Condition Property="IsSelected"	Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeader_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderText_SelectedBrush}"/>
+				<Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItem_SelectedBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsSelected"	Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeader_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderText_SelectedHoverBrush}"/>
+				<Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItem_SelectedHoverBrush}"/>
+			</MultiTrigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+    -->
+
+	<!-- (C1Datarid.FixedNewItemTemplate property) -->
+    <ControlTemplate x:Key="Office2007HorzFixedNewItemTemplate" TargetType="local:GridAddNewItem">
+        <Border SnapsToDevicePixels="False"
+				BorderThickness="{Binding Source, ElementName=vertGridLineWidth,
+					Converter={x:Static local:DoubleToRightThicknessConverter.Default}}"
+				BorderBrush="{DynamicResource C1DataGrid_GridLineVertical_Brush}"
+				>
+            <Border Name="rowBackBrd" Background="{DynamicResource C1DataGrid_NewItem_Brush}">
+                <StackPanel >
+                    <local:PropertyBridge Name="vertGridLineWidth"
+						Source="{DynamicResource C1DataGrid_GridLineVertical_Thickness}"/>
+                    <local:PropertyBridge Name="horzGridLineWidth"
+						Source="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}"/>
+
+                    <Border Visibility="{Binding GridFrame.RowHeaderVisibility,
+                            RelativeSource={RelativeSource TemplatedParent}}"
+                        BorderThickness="{Binding Source, 
+						ElementName=horzGridLineWidth,
+						Converter={x:Static local:DoubleToTopBottomThicknessConverter.Default}}" 
+						BorderBrush="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"
+						>
+                        <Border Name="brd"  
+							Background="{DynamicResource C1DataGrid_NewItemRowHeader_Brush}"
+							BorderBrush="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_Brush}"
+							BorderThickness="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_Thickness}"
+							CornerRadius="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_CornerRadius}"
+							TextElement.Foreground="{DynamicResource C1DataGrid_NewItemRowHeaderText_Brush}">
+                            <local:ItemIndicator Margin="5" Height="15"/>
+                        </Border>
+                    </Border>
+                    <local:ItemContentPresenter />
+
+                </StackPanel>
+            </Border>
+        </Border>
+        <ControlTemplate.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="true"/>
+                    <Condition Property="IsSelected" Value="false"/>
+                </MultiTrigger.Conditions>
+                <Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeader_HoverBrush}"/>
+                <Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_HoverBrush}"/>
+                <Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderText_HoverBrush}"/>
+                <Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItem_HoverBrush}"/>
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="false"/>
+                    <Condition Property="IsSelected"	Value="true"/>
+                </MultiTrigger.Conditions>
+                <Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeader_SelectedBrush}"/>
+                <Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_SelectedBrush}"/>
+                <Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderText_SelectedBrush}"/>
+                <Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItem_SelectedBrush}"/>
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="true"/>
+                    <Condition Property="IsSelected"	Value="true"/>
+                </MultiTrigger.Conditions>
+                <Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeader_SelectedHoverBrush}"/>
+                <Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_SelectedHoverBrush}"/>
+                <Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderText_SelectedHoverBrush}"/>
+                <Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItem_SelectedHoverBrush}"/>
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <!--
+	<ControlTemplate x:Key="Office2007HorzFixedNewItemTemplate" TargetType="local:GridAddNewItem">
+		<Grid Name="rowBackBrd" SnapsToDevicePixels="True" 
+			Background="{DynamicResource C1DataGrid_NewItem_Brush}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+
+			<Border Grid.RowSpan="3" Grid.Column="1" HorizontalAlignment="Right"
+					VerticalAlignment="Stretch"
+					Width="{DynamicResource C1DataGrid_GridLineVertical_Thickness}"
+					Background="{DynamicResource C1DataGrid_GridLineVertical_Brush}"/>
+			<Border Height="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}"
+					HorizontalAlignment="Stretch"
+					Background="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"/>
+				<Border Grid.Row="2" HorizontalAlignment="Stretch"
+					Height="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}"
+					Background="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"/>
+				<Border Name="brd" Grid.Row="1"
+					Background="{DynamicResource C1DataGrid_NewItemRowHeader_Brush}"
+					BorderBrush="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_Brush}"
+					BorderThickness="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_Thickness}"
+					CornerRadius="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_CornerRadius}"
+					TextElement.Foreground="{DynamicResource C1DataGrid_NewItemRowHeaderText_Brush}">
+						<local:ItemIndicator Margin="5" Height="15"/>
+				</Border>
+			<local:ItemContentPresenter Grid.ColumnSpan="2" Grid.Row="3"/>
+
+		</Grid>
+		<ControlTemplate.Triggers>
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsSelected" Value="false"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeader_HoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_HoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderText_HoverBrush}"/>
+				<Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItem_HoverBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="false"/>
+					<Condition Property="IsSelected"	Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeader_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderText_SelectedBrush}"/>
+				<Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItem_SelectedBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsSelected"	Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeader_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderBorder_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_NewItemRowHeaderText_SelectedHoverBrush}"/>
+				<Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_NewItem_SelectedHoverBrush}"/>
+			</MultiTrigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+    -->
+
+	<!-- Tabular vertical grid's column header (C1Datarid.HeaderTemplate property) -->
+    <ControlTemplate x:Key="Office2007HeaderTemplate">
+        <Border SnapsToDevicePixels="True"
+				BorderThickness="{Binding Source, ElementName=horzGridLineWidth,
+					Converter={x:Static local:DoubleToBottomThicknessConverter.Default}}"
+				BorderBrush="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"
+				>
+            <Border Name="rowBackBrd" Background="{DynamicResource C1DataGrid_HeaderItem_Brush}">
+                <StackPanel Orientation="Horizontal">
+
+                    <local:PropertyBridge Name="vertGridLineWidth"
+						Source="{DynamicResource C1DataGrid_GridLineVertical_Thickness}"/>
+                    <local:PropertyBridge Name="horzGridLineWidth"
+						Source="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}"/>
+                    <Border Visibility="{Binding GridFrame.RowHeaderVisibility,
+                        RelativeSource={RelativeSource TemplatedParent}}"
+                        BorderThickness="{Binding Source, ElementName=vertGridLineWidth,
+						Converter={x:Static local:DoubleToLeftRightThicknessConverter.Default}}" 
+						BorderBrush="{DynamicResource C1DataGrid_GridLineVertical_Brush}"
+						>
+                        <Border Name="brd" Width="22"  
+							Background="{DynamicResource C1DataGrid_HeaderItemHeader_Brush}"
+							BorderBrush="{DynamicResource C1DataGrid_HeaderItemHeaderBorder_Brush}"
+							BorderThickness="{DynamicResource C1DataGrid_HeaderItemHeaderBorder_Thickness}"
+							CornerRadius="{DynamicResource C1DataGrid_HeaderItemHeaderBorder_CornerRadius}"
+							TextElement.Foreground="{DynamicResource C1DataGrid_HeaderItemHeaderText_Brush}">
+                        </Border>
+                    </Border>
+                    <local:HeaderContentPresenter IndentDirection="Horizontal" />
+                </StackPanel>
+            </Border>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter TargetName="rowBackBrd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_HeaderItem_HoverBrush}"/>
+                <Setter TargetName="brd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_HeaderItemHeader_HoverBrush}"/>
+                <Setter TargetName="brd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_HeaderItemHeaderBorder_HoverBrush}"/>
+                <Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_HeaderItemHeaderText_HoverBrush}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+
+    </ControlTemplate>
+    <!--
+	<ControlTemplate x:Key="Office2007HeaderTemplate">
+		<Grid SnapsToDevicePixels="True" Name="rowBackBrd" 
+				Background="{DynamicResource C1DataGrid_HeaderItem_Brush}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="22"/>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition />
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+
+			<Border Width="{DynamicResource C1DataGrid_GridLineVertical_Thickness}" 
+					VerticalAlignment="Stretch"
+					Background="{DynamicResource C1DataGrid_GridLineVertical_Brush}"/>
+			<Border Name="brd" Grid.Column="1"
+				Background="{DynamicResource C1DataGrid_HeaderItemHeader_Brush}"
+				BorderBrush="{DynamicResource C1DataGrid_HeaderItemHeaderBorder_Brush}"
+				BorderThickness="{DynamicResource C1DataGrid_HeaderItemHeaderBorder_Thickness}"
+				CornerRadius="{DynamicResource C1DataGrid_HeaderItemHeaderBorder_CornerRadius}"
+				TextElement.Foreground="{DynamicResource C1DataGrid_HeaderItemHeaderText_Brush}"/>
+			<Border Grid.Column="2" 
+					Width="{DynamicResource C1DataGrid_GridLineVertical_Thickness}" 
+					VerticalAlignment="Stretch"
+					Background="{DynamicResource C1DataGrid_GridLineVertical_Brush}"/>
+			<Border Grid.ColumnSpan="4" Grid.Row="1"
+					Height="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}" 
+					HorizontalAlignment="Stretch"  VerticalAlignment="Bottom"
+					Background="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"/>
+			<local:HeaderContentPresenter IndentDirection="Horizontal"
+				Grid.Column="3" Grid.RowSpan="2"/>
+		</Grid>
+		<ControlTemplate.Triggers>
+			<Trigger Property="IsMouseOver" Value="true">
+				<Setter TargetName="rowBackBrd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_HeaderItem_HoverBrush}"/>
+				<Setter TargetName="brd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_HeaderItemHeader_HoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_HeaderItemHeaderBorder_HoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_HeaderItemHeaderText_HoverBrush}"/>
+			</Trigger>
+		</ControlTemplate.Triggers>
+
+	</ControlTemplate>
+    -->
+
+    <!-- Tabular horizontal grid's column header (C1Datarid.HeaderTemplate property) -->
+    <ControlTemplate x:Key="Office2007HeaderHorzTemplate">
+        <Border SnapsToDevicePixels="False"
+				BorderThickness="{Binding Source, ElementName=vertGridLineWidth,
+					Converter={x:Static local:DoubleToRightThicknessConverter.Default}}"
+				BorderBrush="{DynamicResource C1DataGrid_GridLineVertical_Brush}"
+				>
+            <Border Name="rowBackBrd" Background="{DynamicResource C1DataGrid_HeaderItem_Brush}">
+                <StackPanel >
+                    <local:PropertyBridge Name="vertGridLineWidth"
+						Source="{DynamicResource C1DataGrid_GridLineVertical_Thickness}"/>
+                    <local:PropertyBridge Name="horzGridLineWidth"
+						Source="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}"/>
+
+                    <Border Visibility="{Binding GridFrame.RowHeaderVisibility,
+                            RelativeSource={RelativeSource TemplatedParent}}"
+                        BorderThickness="{Binding Source, 
+						ElementName=horzGridLineWidth,
+						Converter={x:Static local:DoubleToTopBottomThicknessConverter.Default}}" 
+						BorderBrush="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"
+						>
+                        <Border Name="brd" Height="25" 
+							Background="{DynamicResource C1DataGrid_HeaderItemHeader_Brush}"
+							BorderBrush="{DynamicResource C1DataGrid_HeaderItemHeaderBorder_Brush}"
+							BorderThickness="{DynamicResource C1DataGrid_HeaderItemHeaderBorder_Thickness}"
+							CornerRadius="{DynamicResource C1DataGrid_HeaderItemHeaderBorder_CornerRadius}"
+							TextElement.Foreground="{DynamicResource C1DataGrid_HeaderItemHeaderText_Brush}">
+                            <!--
+                            <local:ItemIndicator Margin="5" Height="15"/>
+                            -->
+                        </Border>
+                    </Border>
+                    <local:HeaderContentPresenter IndentDirection="Vertical"/>
+
+                </StackPanel>
+            </Border>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter TargetName="rowBackBrd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_HeaderItem_HoverBrush}"/>
+                <Setter TargetName="brd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_HeaderItemHeader_HoverBrush}"/>
+                <Setter TargetName="brd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_HeaderItemHeaderBorder_HoverBrush}"/>
+                <Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_HeaderItemHeaderText_HoverBrush}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <!--
+	<ControlTemplate x:Key="Office2007HeaderHorzTemplate">
+        <Grid Name="rowBackBrd" SnapsToDevicePixels="True" 
+			Background="{DynamicResource C1DataGrid_HeaderItem_Brush}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+
+			<Border Grid.RowSpan="3" Grid.Column="1" HorizontalAlignment="Right"
+					VerticalAlignment="Stretch"
+					Width="{DynamicResource C1DataGrid_GridLineVertical_Thickness}"
+					Background="{DynamicResource C1DataGrid_GridLineVertical_Brush}"/>
+			<Border Height="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}"
+					HorizontalAlignment="Stretch"
+					Background="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"/>
+			<Border Grid.Row="2" HorizontalAlignment="Stretch"
+					Height="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}"
+					Background="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"/>
+			<Border Name="brd" Grid.Row="1"
+				Background="{DynamicResource C1DataGrid_HeaderItemHeader_Brush}"
+				BorderBrush="{DynamicResource C1DataGrid_HeaderItemHeaderBorder_Brush}"
+				BorderThickness="{DynamicResource C1DataGrid_HeaderItemHeaderBorder_Thickness}"
+				CornerRadius="{DynamicResource C1DataGrid_HeaderItemHeaderBorder_CornerRadius}"
+				TextElement.Foreground="{DynamicResource C1DataGrid_HeaderItemHeaderText_Brush}">
+				<local:ItemIndicator Margin="5" Height="15"/>
+			</Border>
+			<local:HeaderContentPresenter IndentDirection="Vertical"
+				Grid.ColumnSpan="2" Grid.Row="3"/>
+		</Grid>
+		<ControlTemplate.Triggers>
+			<Trigger Property="IsMouseOver" Value="true">
+				<Setter TargetName="rowBackBrd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_HeaderItem_HoverBrush}"/>
+				<Setter TargetName="brd" Property="Background" 
+					Value="{DynamicResource C1DataGrid_HeaderItemHeader_HoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_HeaderItemHeaderBorder_HoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_HeaderItemHeaderText_HoverBrush}"/>
+			</Trigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+        -->
+
+	<!-- (C1Datarid.GroupByTemplate property) -->
+	<ControlTemplate x:Key="Office2007GroupByTemplate" TargetType="local:GroupByPresenter">
+		<Border Background="{DynamicResource C1DataGrid_GroupArea_Brush}" 
+			BorderThickness="{DynamicResource C1DataGrid_GroupAreaBorder_Thickness}"
+            BorderBrush="{DynamicResource C1DataGrid_GroupAreaBorder_Brush}"
+            CornerRadius="{DynamicResource C1DataGrid_GroupAreaBorder_CornerRadius}"
+            TextElement.Foreground="{DynamicResource C1DataGrid_GroupAreaText_Brush}">
+			<Grid>
+				<local:GroupByContentPresenter/>
+				<TextBlock Name="dropHereTB" 
+					Text="{Binding GridFrame.GroupByCaption, 
+						RelativeSource={RelativeSource TemplatedParent}}" 
+					Visibility="Collapsed" IsHitTestVisible="False" 
+					VerticalAlignment="Center" TextAlignment="Center"/>
+			</Grid>
+		</Border>
+		<ControlTemplate.Triggers>
+			<DataTrigger Binding="{Binding Path=GroupByColumns.Count,
+			RelativeSource={RelativeSource TemplatedParent}}"
+			Value="0">
+				<Setter TargetName="dropHereTB"	Property="Visibility" Value="Visible"/>
+			</DataTrigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+
+	<!-- (C1DataGrid.GroupByCellsAutoLayoutPanelTemplate property) -->
+	<ItemsPanelTemplate x:Key="DefaultGroupByCellsLayoutPanelTemplate">
+		<local:StairsPanel Padding="4" ConnectorPen="{DynamicResource C1DataGrid_GroupAreaConnector_Pen}"/>
+	</ItemsPanelTemplate>
+
+	<!-- (C1DataGrid.FilterBarTemplate property) -->
+    <ControlTemplate x:Key="DefaultFilterBarTemplate" TargetType="local:FilterBarPresenter">
+        <Border SnapsToDevicePixels="True"
+				BorderThickness="{Binding Source, ElementName=horzGridLineWidth,
+					Converter={x:Static local:DoubleToBottomThicknessConverter.Default}}"
+				BorderBrush="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"
+				>
+            <Border Name="rowBackBrd" Background="{DynamicResource C1DataGrid_FilterBar_Brush}">
+                <StackPanel Orientation="Horizontal">
+
+                    <local:PropertyBridge Name="vertGridLineWidth"
+						Source="{DynamicResource C1DataGrid_GridLineVertical_Thickness}"/>
+                    <local:PropertyBridge Name="horzGridLineWidth"
+						Source="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}"/>
+                    <Border Visibility="{Binding GridFrame.RowHeaderVisibility,
+                        RelativeSource={RelativeSource TemplatedParent}}"
+                        BorderThickness="{Binding Source, ElementName=vertGridLineWidth,
+						Converter={x:Static local:DoubleToLeftRightThicknessConverter.Default}}" 
+						BorderBrush="{DynamicResource C1DataGrid_GridLineVertical_Brush}"
+						>
+                        <Border Name="brd" Width="22"  
+							Background="{DynamicResource C1DataGrid_FilterItemRowHeader_Brush}"
+							BorderBrush="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_Brush}"
+							BorderThickness="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_Thickness}"
+							CornerRadius="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_CornerRadius}"
+							TextElement.Foreground="{DynamicResource C1DataGrid_FilterItemRowHeaderText_Brush}">
+                            <local:ItemIndicator />
+                        </Border>
+                    </Border>
+                    <local:FilterBarContentPresenter IndentDirection="Horizontal" />
+                </StackPanel>
+            </Border>
+        </Border>
+        <ControlTemplate.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="true"/>
+                    <Condition Property="IsKeyboardFocusWithin"	Value="false"/>
+                </MultiTrigger.Conditions>
+                <Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeader_HoverBrush}"/>
+                <Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_HoverBrush}"/>
+                <Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderText_HoverBrush}"/>
+                <Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterBar_HoverBrush}"/>
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="false"/>
+                    <Condition Property="IsKeyboardFocusWithin"	Value="true"/>
+                </MultiTrigger.Conditions>
+                <Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeader_SelectedBrush}"/>
+                <Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_SelectedBrush}"/>
+                <Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderText_SelectedBrush}"/>
+                <Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterBar_SelectedBrush}"/>
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="true"/>
+                    <Condition Property="IsKeyboardFocusWithin"	Value="true"/>
+                </MultiTrigger.Conditions>
+                <Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeader_SelectedHoverBrush}"/>
+                <Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_SelectedHoverBrush}"/>
+                <Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderText_SelectedHoverBrush}"/>
+                <Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterBar_SelectedHoverBrush}"/>
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <!--
+	<ControlTemplate x:Key="DefaultFilterBarTemplate">
+		<Grid SnapsToDevicePixels="True" Name="rowBackBrd" 
+				Background="{DynamicResource C1DataGrid_FilterBar_Brush}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="22"/>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition />
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+
+			<Border Width="{DynamicResource C1DataGrid_GridLineVertical_Thickness}" 
+					VerticalAlignment="Stretch"
+					Background="{DynamicResource C1DataGrid_GridLineVertical_Brush}"/>
+			<Border Name="brd" Grid.Column="1"
+				Background="{DynamicResource C1DataGrid_FilterItemRowHeader_Brush}"
+				BorderBrush="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_Brush}"
+				BorderThickness="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_Thickness}"
+				CornerRadius="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_CornerRadius}"
+				TextElement.Foreground="{DynamicResource C1DataGrid_FilterItemRowHeaderText_Brush}">
+				<local:ItemIndicator/>
+			</Border>
+			<Border Grid.Column="2" 
+					Width="{DynamicResource C1DataGrid_GridLineVertical_Thickness}" 
+					VerticalAlignment="Stretch"
+					Background="{DynamicResource C1DataGrid_GridLineVertical_Brush}"/>
+			<Border Grid.ColumnSpan="4" Grid.Row="1"
+					Height="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}" 
+					HorizontalAlignment="Stretch"  VerticalAlignment="Bottom"
+					Background="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"/>
+			<local:FilterBarContentPresenter IndentDirection="Horizontal" 
+				Grid.Column="3" Grid.RowSpan="2"/>
+		</Grid>
+		<ControlTemplate.Triggers>
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsKeyboardFocusWithin"	Value="false"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeader_HoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_HoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderText_HoverBrush}"/>
+				<Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterBar_HoverBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="false"/>
+					<Condition Property="IsKeyboardFocusWithin"	Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeader_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderText_SelectedBrush}"/>
+				<Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterBar_SelectedBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsKeyboardFocusWithin"	Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeader_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderText_SelectedHoverBrush}"/>
+				<Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterBar_SelectedHoverBrush}"/>
+			</MultiTrigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+    -->
+
+    <!-- (C1DataGrid.FilterBarTemplate property) -->
+    <ControlTemplate x:Key="DefaultHizontalFilterBarTemplate">
+        <Border SnapsToDevicePixels="False"
+				BorderThickness="{Binding Source, ElementName=vertGridLineWidth,
+					Converter={x:Static local:DoubleToRightThicknessConverter.Default}}"
+				BorderBrush="{DynamicResource C1DataGrid_GridLineVertical_Brush}"
+				>
+            <Border Name="rowBackBrd" Background="{DynamicResource C1DataGrid_FilterBar_Brush}">
+                <StackPanel >
+                    <local:PropertyBridge Name="vertGridLineWidth"
+						Source="{DynamicResource C1DataGrid_GridLineVertical_Thickness}"/>
+                    <local:PropertyBridge Name="horzGridLineWidth"
+						Source="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}"/>
+
+                    <Border Visibility="{Binding GridFrame.RowHeaderVisibility,
+                            RelativeSource={RelativeSource TemplatedParent}}"
+                        BorderThickness="{Binding Source, 
+						ElementName=horzGridLineWidth,
+						Converter={x:Static local:DoubleToTopBottomThicknessConverter.Default}}" 
+						BorderBrush="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"
+						>
+                        <Border Name="brd"  
+							Background="{DynamicResource C1DataGrid_FilterItemRowHeader_Brush}"
+							BorderBrush="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_Brush}"
+							BorderThickness="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_Thickness}"
+							CornerRadius="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_CornerRadius}"
+							TextElement.Foreground="{DynamicResource C1DataGrid_FilterItemRowHeaderText_Brush}">
+                            <local:ItemIndicator Margin="5" Height="15"/>
+                        </Border>
+                    </Border>
+                    <local:FilterBarContentPresenter IndentDirection="Vertical"/>
+
+                </StackPanel>
+            </Border>
+        </Border>
+        <ControlTemplate.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="true"/>
+                    <Condition Property="IsKeyboardFocusWithin"	Value="false"/>
+                </MultiTrigger.Conditions>
+                <Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeader_HoverBrush}"/>
+                <Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_HoverBrush}"/>
+                <Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderText_HoverBrush}"/>
+                <Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterBar_HoverBrush}"/>
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="false"/>
+                    <Condition Property="IsKeyboardFocusWithin"	Value="true"/>
+                </MultiTrigger.Conditions>
+                <Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeader_SelectedBrush}"/>
+                <Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_SelectedBrush}"/>
+                <Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderText_SelectedBrush}"/>
+                <Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterBar_SelectedBrush}"/>
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="true"/>
+                    <Condition Property="IsKeyboardFocusWithin"	Value="true"/>
+                </MultiTrigger.Conditions>
+                <Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeader_SelectedHoverBrush}"/>
+                <Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_SelectedHoverBrush}"/>
+                <Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderText_SelectedHoverBrush}"/>
+                <Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterBar_SelectedHoverBrush}"/>
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <!--
+	<ControlTemplate x:Key="DefaultHizontalFilterBarTemplate">
+		<Grid Name="rowBackBrd" SnapsToDevicePixels="True" 
+			Background="{DynamicResource C1DataGrid_FilterBar_Brush}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+
+			<Border Grid.RowSpan="3" Grid.Column="1" HorizontalAlignment="Right"
+					VerticalAlignment="Stretch"
+					Width="{DynamicResource C1DataGrid_GridLineVertical_Thickness}"
+					Background="{DynamicResource C1DataGrid_GridLineVertical_Brush}"/>
+			<Border Height="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}"
+					HorizontalAlignment="Stretch"
+					Background="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"/>
+			<Border Grid.Row="2" HorizontalAlignment="Stretch"
+					Height="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}"
+					Background="{DynamicResource C1DataGrid_GridLineHorizontal_Brush}"/>
+			<Border Name="brd" Grid.Row="1"
+				Background="{DynamicResource C1DataGrid_FilterItemRowHeader_Brush}"
+				BorderBrush="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_Brush}"
+				BorderThickness="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_Thickness}"
+				CornerRadius="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_CornerRadius}"
+				TextElement.Foreground="{DynamicResource C1DataGrid_FilterItemRowHeaderText_Brush}">
+				<local:ItemIndicator Margin="5" Height="15"/>
+			</Border>
+			<local:FilterBarContentPresenter IndentDirection="Vertical" 
+				Grid.ColumnSpan="2" Grid.Row="3"/>
+		</Grid>
+		<ControlTemplate.Triggers>
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsKeyboardFocusWithin"	Value="false"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeader_HoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_HoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderText_HoverBrush}"/>
+				<Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterBar_HoverBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="false"/>
+					<Condition Property="IsKeyboardFocusWithin"	Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeader_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_SelectedBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderText_SelectedBrush}"/>
+				<Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterBar_SelectedBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsKeyboardFocusWithin"	Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="brd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeader_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderBorder_SelectedHoverBrush}"/>
+				<Setter TargetName="brd" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_FilterItemRowHeaderText_SelectedHoverBrush}"/>
+				<Setter TargetName="rowBackBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_FilterBar_SelectedHoverBrush}"/>
+			</MultiTrigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+    -->
+
+	<ControlTemplate x:Key="Office2007CardItemTemplate" TargetType="local:GridItem">
+		<Grid Margin="3" >
+			<Grid.RowDefinitions>
+				<RowDefinition  Height="Auto"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			<Border Name="headerBrd" MinHeight="30"
+              Visibility="{Binding GridFrame.RowHeaderVisibility,
+                            RelativeSource={RelativeSource TemplatedParent}}"
+              Background="{DynamicResource C1DataGrid_CardHeader_Brush}"
+              BorderBrush="{DynamicResource C1DataGrid_CardHeaderBorder_Brush}"
+              BorderThickness="{DynamicResource C1DataGrid_CardHeaderBorder_Thickness}"
+              CornerRadius="{DynamicResource C1DataGrid_CardHeaderBorder_CornerRadius}">
+				<TextBlock Name="headerTb" Text="{Binding Path=TitleCell.Value, 
+				  RelativeSource={RelativeSource TemplatedParent}}" 
+				  TextAlignment="Left" Margin="10, 10, 10, 10" 
+				  FontSize="16" FontFamily="Arial"
+				  Foreground="{DynamicResource C1DataGrid_CardHeaderText_Brush}"/>
+			</Border>
+			<Border Name="outlineBrd" Grid.Row="1" Margin="0, -1, 0, 0" 
+				BorderThickness="{DynamicResource C1DataGrid_CardBorder_Thickness}"
+				CornerRadius="{DynamicResource C1DataGrid_CardBorder_CornerRadius}"
+				  BorderBrush="{DynamicResource C1DataGrid_CardBorder_Brush}"
+				  Background="{DynamicResource C1DataGrid_Card_Brush}">
+					<local:ItemContentPresenter/>
+			</Border>
+		</Grid>
+		<ControlTemplate.Triggers>
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsSelected" Value="false"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="headerBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_CardHeader_HoverBrush}"/>
+				<Setter TargetName="headerBrd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_CardHeaderBorder_HoverBrush}"/>
+				<Setter TargetName="headerTb" Property="Foreground"
+					Value="{DynamicResource C1DataGrid_CardHeaderText_HoverBrush}"/>
+				<Setter TargetName="outlineBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_Card_HoverBrush}"/>
+				<Setter TargetName="outlineBrd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_CardBorder_HoverBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="false"/>
+					<Condition Property="IsSelected" Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="headerBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_CardHeader_SelectedBrush}"/>
+				<Setter TargetName="headerBrd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_CardHeaderBorder_SelectedBrush}"/>
+				<Setter TargetName="headerTb" Property="Foreground"
+					Value="{DynamicResource C1DataGrid_CardHeaderText_SelectedBrush}"/>
+				<Setter TargetName="outlineBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_Card_SelectedBrush}"/>
+				<Setter TargetName="outlineBrd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_CardBorder_SelectedBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true"/>
+					<Condition Property="IsSelected" Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="headerBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_CardHeader_SelectedHoverBrush}"/>
+				<Setter TargetName="headerBrd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_CardHeaderBorder_SelectedHoverBrush}"/>
+				<Setter TargetName="headerTb" Property="Foreground"
+					Value="{DynamicResource C1DataGrid_CardHeaderText_SelectedHoverBrush}"/>
+				<Setter TargetName="outlineBrd" Property="Background"
+					Value="{DynamicResource C1DataGrid_Card_SelectedHoverBrush}"/>
+				<Setter TargetName="outlineBrd" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_CardBorder_SelectedHoverBrush}"/>
+			</MultiTrigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+
+	<ControlTemplate x:Key="Office2007CardCellTemplate" 
+		TargetType="local:ItemCellPresenter">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<Border Name="captionBorder" Margin="2,1,0,0" 
+				BorderThickness="{DynamicResource C1DataGrid_CardColumnHeaderBorder_Thickness}"
+				BorderBrush="{DynamicResource C1DataGrid_CardColumnHeaderBorder_Brush}"
+				Background="{DynamicResource C1DataGrid_CardColumnHeader_Brush}"
+				CornerRadius="{DynamicResource C1DataGrid_CardColumnHeaderBorder_CornerRadius}"
+				TextElement.Foreground="{DynamicResource C1DataGrid_CardColumnHeaderText_Brush}">
+				<local:HeaderCellPresenter ColumnName="{Binding Cell.Column.ColumnName,
+						RelativeSource={RelativeSource TemplatedParent}}"/>
+			</Border>
+			<Border Name="contentBorder" Grid.Column="1" Margin="4,1,0,0" 
+				BorderThickness="{DynamicResource C1DataGrid_CardCellBorder_Thickness}"
+				BorderBrush="{DynamicResource C1DataGrid_CardCellBorder_Brush}"
+				Background="{DynamicResource C1DataGrid_CardCell_Brush}"
+				CornerRadius="{DynamicResource C1DataGrid_CardCellBorder_CornerRadius}"
+				TextElement.Foreground="{DynamicResource C1DataGrid_CardCellText_Brush}">
+				<local:ItemCellContentPresenter />
+			</Border>
+			<local:PropertyBridge Name="vertThicknessSink" 
+				Source="{DynamicResource C1DataGrid_GridLineVertical_Thickness}"/>
+			<local:PropertyBridge Name="horzThicknessSink" 
+				Source="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}"/>
+			<local:PropertyBridge Name="selFrameExtraThicknessSink" 
+				Source="{DynamicResource C1DataGrid_CellSelectionFrame_ExtraThickness}"/>
+			<Border Name="selFrameBrd" Grid.Column="1" Margin="4,1,0,0"
+				IsHitTestVisible="False" Background="Transparent"
+				BorderBrush="Transparent"
+				CornerRadius="{DynamicResource C1DataGrid_CardCellBorder_CornerRadius}">
+				<Border.BorderThickness>
+					<MultiBinding Converter="{x:Static local:CellSelectionFrameThicknessConverter.Default}">
+						<Binding Path="Target" ElementName="vertThicknessSink" />
+						<Binding Path="Target" ElementName="horzThicknessSink" />
+						<Binding Path="Target" ElementName="selFrameExtraThicknessSink" />
+					</MultiBinding>
+				</Border.BorderThickness>
+			</Border>
+		</Grid>
+		<ControlTemplate.Triggers>
+			<!-- Cell triggers -->
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition SourceName="contentBorder" Property="IsMouseOver" 
+						Value="true"/>
+					<Condition Property="IsSelected" Value="false"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="contentBorder" Property="Background"
+					Value="{DynamicResource C1DataGrid_CardCell_HoverBrush}"/>
+				<Setter TargetName="contentBorder" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_CardCellBorder_HoverBrush}"/>
+				<Setter TargetName="contentBorder" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_CardCellText_HoverBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition SourceName="contentBorder" Property="IsMouseOver" 
+						Value="false"/>
+					<Condition Property="IsSelected" Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="contentBorder" Property="Background"
+					Value="{DynamicResource C1DataGrid_CardCell_SelectedBrush}"/>
+				<Setter TargetName="contentBorder" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_CardCellBorder_SelectedBrush}"/>
+				<Setter TargetName="contentBorder" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_CardCellText_SelectedBrush}"/>
+				<Setter TargetName="selFrameBrd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_CellSelectionFrame_Brush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition SourceName="contentBorder" Property="IsMouseOver" 
+						Value="true"/>
+					<Condition Property="IsSelected" Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="contentBorder" Property="Background"
+					Value="{DynamicResource C1DataGrid_CardCell_SelectedHoverBrush}"/>
+				<Setter TargetName="contentBorder" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_CardCellBorder_SelectedHoverBrush}"/>
+				<Setter TargetName="contentBorder" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_CardCellText_SelectedHoverBrush}"/>
+				<Setter TargetName="selFrameBrd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_CellSelectionFrame_HoverBrush}"/>
+			</MultiTrigger>
+
+			<!-- Caption triggers -->
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition SourceName="captionBorder" Property="IsMouseOver" 
+						Value="true"/>
+					<Condition Property="IsSelected" Value="false"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="captionBorder" Property="Background"
+					Value="{DynamicResource C1DataGrid_CardColumnHeader_HoverBrush}"/>
+				<Setter TargetName="captionBorder" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_CardColumnHeaderBorder_HoverBrush}"/>
+				<Setter TargetName="captionBorder" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_CardColumnHeaderText_HoverBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition SourceName="captionBorder" Property="IsMouseOver" 
+						Value="false"/>
+					<Condition Property="IsSelected" Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="captionBorder" Property="Background"
+					Value="{DynamicResource C1DataGrid_CardColumnHeader_SelectedBrush}"/>
+				<Setter TargetName="captionBorder" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_CardColumnHeaderBorder_SelectedBrush}"/>
+				<Setter TargetName="captionBorder" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_CardColumnHeaderText_SelectedBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition SourceName="captionBorder" Property="IsMouseOver" 
+						Value="true"/>
+					<Condition Property="IsSelected" Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="captionBorder" Property="Background"
+					Value="{DynamicResource C1DataGrid_CardColumnHeader_SelectedHoverBrush}"/>
+				<Setter TargetName="captionBorder" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_CardColumnHeaderBorder_SelectedHoverBrush}"/>
+				<Setter TargetName="captionBorder" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_CardColumnHeaderText_SelectedHoverBrush}"/>
+			</MultiTrigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+
+	<ControlTemplate x:Key="Office2007FixedNewCardCellTemplate" 
+		TargetType="local:ItemCellPresenter">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<Border Name="captionBorder" Margin="2,1,0,0" 
+				BorderThickness="{DynamicResource C1DataGrid_CardNewItemColumnHeaderBorder_Thickness}"
+				BorderBrush="{DynamicResource C1DataGrid_CardNewItemColumnHeaderBorder_Brush}"
+				Background="{DynamicResource C1DataGrid_CardNewItemColumnHeader_Brush}"
+				CornerRadius="{DynamicResource C1DataGrid_CardNewItemColumnHeaderBorder_CornerRadius}"
+				TextElement.Foreground="{DynamicResource C1DataGrid_CardNewItemColumnHeaderText_Brush}">
+				<local:HeaderCellPresenter ColumnName="{Binding Cell.Column.ColumnName,
+						RelativeSource={RelativeSource TemplatedParent}}"/>
+			</Border>
+			<Border Name="contentBorder" Grid.Column="1" Margin="4,1,0,0" 
+				BorderBrush="{DynamicResource C1DataGrid_CardNewItemCellBorder_Brush}"
+				Background="{DynamicResource C1DataGrid_CardNewItemCell_Brush}"
+				BorderThickness="{DynamicResource C1DataGrid_CardNewItemCellBorder_Thickness}"
+				CornerRadius="{DynamicResource C1DataGrid_CardNewItemCellBorder_CornerRadius}"
+				TextElement.Foreground="{DynamicResource C1DataGrid_CardNewItemCellText_Brush}">
+				<local:ItemCellContentPresenter />
+			</Border>
+			<local:PropertyBridge Name="vertThicknessSink" 
+				Source="{DynamicResource C1DataGrid_GridLineVertical_Thickness}"/>
+			<local:PropertyBridge Name="horzThicknessSink" 
+				Source="{DynamicResource C1DataGrid_GridLineHorizontal_Thickness}"/>
+			<local:PropertyBridge Name="selFrameExtraThicknessSink" 
+				Source="{DynamicResource C1DataGrid_CellSelectionFrame_ExtraThickness}"/>
+			<Border Name="selFrameBrd" Grid.Column="1" Margin="4,1,0,0"
+				IsHitTestVisible="False" Background="Transparent"
+				BorderBrush="Transparent"
+				CornerRadius="{DynamicResource C1DataGrid_CardNewItemCellBorder_CornerRadius}">
+				<Border.BorderThickness>
+					<MultiBinding Converter="{x:Static local:CellSelectionFrameThicknessConverter.Default}">
+						<Binding Path="Target" ElementName="vertThicknessSink" />
+						<Binding Path="Target" ElementName="horzThicknessSink" />
+						<Binding Path="Target" ElementName="selFrameExtraThicknessSink" />
+					</MultiBinding>
+				</Border.BorderThickness>
+			</Border>
+		</Grid>
+		<ControlTemplate.Triggers>
+			<!-- Cell triggers -->
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition SourceName="contentBorder" Property="IsMouseOver" 
+						Value="true"/>
+					<Condition Property="IsSelected" Value="false"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="contentBorder" Property="Background"
+					Value="{DynamicResource C1DataGrid_CardNewItemCell_HoverBrush}"/>
+				<Setter TargetName="contentBorder" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_CardNewItemCellBorder_HoverBrush}"/>
+				<Setter TargetName="contentBorder" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_CardNewItemCellText_HoverBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition SourceName="contentBorder" Property="IsMouseOver" 
+						Value="false"/>
+					<Condition Property="IsSelected" Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="contentBorder" Property="Background"
+					Value="{DynamicResource C1DataGrid_CardNewItemCell_SelectedBrush}"/>
+				<Setter TargetName="contentBorder" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_CardNewItemCellBorder_SelectedBrush}"/>
+				<Setter TargetName="contentBorder" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_CardNewItemCellText_SelectedBrush}"/>
+				<Setter TargetName="selFrameBrd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_CellSelectionFrame_Brush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition SourceName="contentBorder" Property="IsMouseOver" 
+						Value="true"/>
+					<Condition Property="IsSelected" Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="contentBorder" Property="Background"
+					Value="{DynamicResource C1DataGrid_CardNewItemCell_SelectedHoverBrush}"/>
+				<Setter TargetName="contentBorder" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_CardNewItemCellBorder_SelectedHoverBrush}"/>
+				<Setter TargetName="contentBorder" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_CardNewItemCellText_SelectedHoverBrush}"/>
+				<Setter TargetName="selFrameBrd" Property="BorderBrush" 
+					Value="{DynamicResource C1DataGrid_CardCellSelectionFrame_HoverBrush}"/>
+			</MultiTrigger>
+
+			<!-- Caption triggers -->
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition SourceName="captionBorder" Property="IsMouseOver" 
+						Value="true"/>
+					<Condition Property="IsSelected" Value="false"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="captionBorder" Property="Background"
+					Value="{DynamicResource C1DataGrid_CardNewItemColumnHeader_HoverBrush}"/>
+				<Setter TargetName="captionBorder" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_CardNewItemColumnHeaderBorder_HoverBrush}"/>
+				<Setter TargetName="captionBorder" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_CardNewItemColumnHeaderText_HoverBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition SourceName="captionBorder" Property="IsMouseOver" 
+						Value="false"/>
+					<Condition Property="IsSelected" Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="captionBorder" Property="Background"
+					Value="{DynamicResource C1DataGrid_CardNewItemColumnHeader_SelectedBrush}"/>
+				<Setter TargetName="captionBorder" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_CardNewItemColumnHeaderBorder_SelectedBrush}"/>
+				<Setter TargetName="captionBorder" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_CardNewItemColumnHeaderText_SelectedBrush}"/>
+			</MultiTrigger>
+
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition SourceName="captionBorder" Property="IsMouseOver" 
+						Value="true"/>
+					<Condition Property="IsSelected" Value="true"/>
+				</MultiTrigger.Conditions>
+				<Setter TargetName="captionBorder" Property="Background"
+					Value="{DynamicResource C1DataGrid_CardNewItemColumnHeader_SelectedHoverBrush}"/>
+				<Setter TargetName="captionBorder" Property="BorderBrush"
+					Value="{DynamicResource C1DataGrid_CardNewItemColumnHeaderBorder_SelectedHoverBrush}"/>
+				<Setter TargetName="captionBorder" Property="TextElement.Foreground"
+					Value="{DynamicResource C1DataGrid_CardNewItemColumnHeaderText_SelectedHoverBrush}"/>
+			</MultiTrigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+
+
+
+	<!-- Base Style for all view speific styles -->
+	<Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:C1DataGrid},
+			ResourceId=Office2007CellDefinitionsStyle}" TargetType="{x:Type local:C1DataGrid}">
+		<Setter Property="HeaderCellTemplate" 
+            Value="{StaticResource Office2007HeaderCellTemplate}"/>
+		<Setter Property="HeaderCellContentTemplate" 
+            Value="{StaticResource Office2007HeaderCellContentTemplate}"/>
+		<Setter Property="GroupByCellTemplate" 
+            Value="{StaticResource Office2007GroupByCellTemplate}"/>
+		<Setter Property="ItemCellTemplate" 
+            Value="{StaticResource Office2007ItemCellTemplate}"/>
+		<Setter Property="ItemCellShowContentTemplate" 
+            Value="{StaticResource Office2007ItemCellShowContentTemplate}"/>
+		<Setter Property="ItemCellEditContentTemplate" 
+            Value="{StaticResource Office2007ItemCellEditContentTemplate}"/>
+		<Setter Property="UniversalItemContentTemplate" 
+            Value="{StaticResource Office2007UniversalItemContentTemplate}"/>
+		<Setter Property="ItemTemplate" Value="{StaticResource Office2007ItemTemplate}"/>
+		<Setter Property="HeaderTemplate" Value="{StaticResource Office2007HeaderTemplate}"/>
+		<Setter Property="GroupByTemplate" Value="{StaticResource Office2007GroupByTemplate}"/>
+		<Setter Property="GroupByContentTemplate" 
+            Value="{StaticResource DefaultGroupByContentTemplate}"/>
+		<Setter Property="GroupByCellsAutoLayoutPanelTemplate" 
+            Value="{StaticResource DefaultGroupByCellsLayoutPanelTemplate}"/>
+		<Setter Property="AscendingSortIndicatorTemplate" 
+            Value="{StaticResource AscSortIndicatorTemplate}"/>
+		<Setter Property="DescendingSortIndicatorTemplate" 
+            Value="{StaticResource DescSortIndicatorTemplate}"/>
+		<Setter Property="CurrentItemIndicatorTemplate" 
+            Value="{StaticResource VerticalItemsCurrentIndicatorTemplate}"/>
+		<Setter Property="NewItemIndicatorTemplate" 
+            Value="{StaticResource NewItemIndicatorTemplate}"/>
+		<Setter Property="Foreground" Value="Black"/>
+		<Setter Property="HorizontalSplitResizerStyle" Value="{StaticResource DefaultHorizontalSplitResizerStyle}"/>
+		<Setter Property="VerticalSplitResizerStyle" Value="{StaticResource DefaultVerticalSplitResizerStyle}"/>
+		<Setter Property="MoveGroupByColumnBeforeAdornerTemplate" 
+            Value="{StaticResource MoveHorizontalColumnBeforeAdornerTemplate}"/>
+		<Setter Property="MoveGroupByColumnAfterAdornerTemplate" 
+            Value="{StaticResource MoveHorizontalColumnAfterAdornerTemplate}"/>
+		<Setter Property="ItemChildListsToggleTemplate" 
+			Value="{StaticResource ItemChildListsToggleTemplate}"/>
+		<Setter Property="FilterBarIndicatorTemplate" 
+			Value="{StaticResource FilterBarIndicatorTemplate}"/>
+		<Setter Property="ColumnFilterCellTemplate" 
+            Value="{StaticResource Office2007ColumnFilterCellTemplate}"/>
+        <Setter Property="ItemCellErrorAdornerTemplate" 
+            Value="{StaticResource ItemCellErrorAdornerTemplate}"/>
+        <Setter Property="AvailableThemes">
+			<Setter.Value>
+				<local:C1ThemeKeyCollection>
+					<local:C1ThemeKey ThemeName="Office2007Default"
+						TypeInTargetAssembly="{x:Type local:C1DataGrid}"/>
+					<local:C1ThemeKey ThemeName="Office2007Blue"
+						TypeInTargetAssembly="{x:Type local:C1DataGrid}"/>
+					<local:C1ThemeKey ThemeName="Office2007Silver"
+						TypeInTargetAssembly="{x:Type local:C1DataGrid}"/>
+					<local:C1ThemeKey ThemeName="Office2007Black"
+						TypeInTargetAssembly="{x:Type local:C1DataGrid}"/>
+					<local:C1ThemeKey ThemeName="Office2003Classic"
+						TypeInTargetAssembly="{x:Type local:C1DataGrid}"/>
+					<local:C1ThemeKey ThemeName="Office2003Blue"
+						TypeInTargetAssembly="{x:Type local:C1DataGrid}"/>
+					<local:C1ThemeKey ThemeName="Office2003Olive"
+						TypeInTargetAssembly="{x:Type local:C1DataGrid}"/>
+					<local:C1ThemeKey ThemeName="Office2003Royale"
+						TypeInTargetAssembly="{x:Type local:C1DataGrid}"/>
+					<local:C1ThemeKey ThemeName="Office2003Silver"
+						TypeInTargetAssembly="{x:Type local:C1DataGrid}"/>
+					<local:C1ThemeKey ThemeName="DuskBlue"
+						TypeInTargetAssembly="{x:Type local:C1DataGrid}"/>
+					<local:C1ThemeKey ThemeName="DuskGreen"
+						TypeInTargetAssembly="{x:Type local:C1DataGrid}"/>
+					<local:C1ThemeKey ThemeName="MediaPlayer"
+						TypeInTargetAssembly="{x:Type local:C1DataGrid}"/>
+					<local:C1ThemeKey ThemeName="Vista"
+						TypeInTargetAssembly="{x:Type local:C1DataGrid}"/>
+
+
+				</local:C1ThemeKeyCollection>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="DefaultTypeBasedCellContentTemplates" 
+            Value="{StaticResource defaultCellContentTemplates}"/>
+	</Style>
+
+
+
+</ResourceDictionary>

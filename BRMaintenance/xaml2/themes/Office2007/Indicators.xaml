@@ -1,0 +1,99 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:C1.WPF.C1DataGrid;assembly=C1.WPF.C1DataGrid"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    >
+
+	<ControlTemplate x:Key="AscSortIndicatorTemplate">
+		<Polygon Points="0,7.6 5,0 10,7.6" Fill="{DynamicResource C1DataGrid_SortAscendingIndicator_Brush}" VerticalAlignment="Top"
+			Margin="0,3,0,0"/>
+	</ControlTemplate>
+
+	<ControlTemplate x:Key="DescSortIndicatorTemplate">
+		<Polygon Points="0,0 5,7.6 10,0" Fill="{DynamicResource C1DataGrid_SortDescendingIndicator_Brush}" VerticalAlignment="Top"
+			Margin="0,3,0,0"/>
+	</ControlTemplate>
+
+	<ControlTemplate x:Key="VerticalItemsCurrentIndicatorTemplate">
+		<Polygon Points="0,0 0,10 9,5" 
+			Fill="{DynamicResource C1DataGrid_CurrentItemIndicator_Brush}" 
+			VerticalAlignment="Center"
+			HorizontalAlignment="Center" StrokeLineJoin="Miter"/>
+	</ControlTemplate>
+
+	<ControlTemplate x:Key="HorizontalItemsCurrentIndicatorTemplate">
+		<Polygon Points="0,0 5,9 10,0" 
+			Fill="{DynamicResource C1DataGrid_CurrentItemIndicator_Brush}" 
+			VerticalAlignment="Center"
+			HorizontalAlignment="Center" StrokeLineJoin="Miter"/>
+	</ControlTemplate>
+
+	<ControlTemplate x:Key="NewItemIndicatorTemplate">
+		<TextBlock Foreground="{DynamicResource C1DataGrid_NewItemIndicator_Brush}" Width="10" 
+			FontSize="14" VerticalAlignment="Center" Margin="0,0,0,-5" 
+			FontFamily="Tahoma">*</TextBlock>
+  </ControlTemplate>
+
+	<ControlTemplate x:Key="FilterBarIndicatorTemplate">
+		<Polygon Points="0,0 0,1 4,6 4,10 7,10 7,6 11,1 11,0" 
+			Fill="{DynamicResource C1DataGrid_FilterItemIndicator_Brush}"
+			 Margin="0,0,0,0" StrokeLineJoin="Miter" HorizontalAlignment="Center"
+			 VerticalAlignment="Center"/>
+	</ControlTemplate>
+
+    <ControlTemplate x:Key="TotalBarIndicatorTemplate">
+        <Polyline Points="9,2 9,0, 0,0 6,5, 0,11, 9,11 9,9" 
+			Stroke="{DynamicResource C1DataGrid_TotalItemIndicator_Brush}"
+            StrokeThickness="1"
+			 Margin="0,0,0,0" StrokeLineJoin="Miter" HorizontalAlignment="Center"
+			 VerticalAlignment="Center"/>
+    </ControlTemplate>
+
+    <DataTemplate x:Key="MoveHorizontalColumnBeforeAdornerTemplate">
+		<Polygon Points="0,5.5 5.6,0 5.6,11" 
+			Fill="{DynamicResource C1DataGrid_ColumnReorderIndicatorHorizontal_Brush}" 
+			VerticalAlignment="Center"
+			HorizontalAlignment="Left" Margin="-2,0,0,0" StrokeLineJoin="Miter"/>
+	</DataTemplate>
+
+	<DataTemplate x:Key="MoveHorizontalColumnAfterAdornerTemplate">
+		<Polygon Points="0,0 0,11 5.6,5.5" 
+			Fill="{DynamicResource C1DataGrid_ColumnReorderIndicatorHorizontal_Brush}" 
+			VerticalAlignment="Center"
+			HorizontalAlignment="Right" Margin="0,0,-2,0" StrokeLineJoin="Miter"/>
+	</DataTemplate>
+
+	<DataTemplate x:Key="MoveVerticalColumnBeforeAdornerTemplate">
+		<Polygon Points="0,5.6 5.5,0 11,5.6" 
+			Fill="{DynamicResource C1DataGrid_ColumnReorderIndicatorVertical_Brush}" 
+			VerticalAlignment="Top"
+			HorizontalAlignment="Center" Margin="0,-2,0,0" StrokeLineJoin="Miter"/>
+	</DataTemplate>
+
+	<DataTemplate x:Key="MoveVerticalColumnAfterAdornerTemplate">
+		<Polygon Points="0,0 5.5,5.6 11,0" 
+			Fill="{DynamicResource C1DataGrid_ColumnReorderIndicatorVertical_Brush}" 
+			VerticalAlignment="Bottom"
+			HorizontalAlignment="Center" Margin="0,0,0,-2" StrokeLineJoin="Miter"/>
+	</DataTemplate>
+
+	<ControlTemplate x:Key="ItemChildListsToggleTemplate" 
+		TargetType="local:ItemChildListsToggle">
+		<Border BorderThickness="0.5" Width="9" Height="9"   Margin="3"
+			BorderBrush="{DynamicResource C1DataGrid_HierarchyExpander_Foreground}" 
+			Background="{DynamicResource C1DataGrid_HierarchyExpander_Brush}"
+			SnapsToDevicePixels="False">
+			<TextBlock Name="tb" Text="+" VerticalAlignment="Center" 
+				TextAlignment="Center" FontFamily="Arial" 
+				Foreground="{DynamicResource C1DataGrid_HierarchyExpander_Foreground}"
+				FontSize="10" FontWeight="ExtraLight"/>
+		</Border>
+		<ControlTemplate.Triggers>
+			<Trigger Property="IsExpanded" Value="True">
+				<Setter TargetName="tb" Property="Text" Value="-"/>
+			</Trigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+
+
+</ResourceDictionary>
